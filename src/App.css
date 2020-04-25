@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 .App {
@@ -8,7 +9,6 @@
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
 
@@ -29,26 +29,161 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* #btn-default {
+
+} */
+#btn-pro {
+  background-color: #222
+}
+#btn-retro {
+  background-image: linear-gradient(#FC600A, #FCCC1A, #B2D732, #347C98, #4424D6, #C21460);
+  font-weight: 500;
+  font-size: 1.1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/***** ABOUT ******/
 .canvas {
+  top: 0;
+  left: 0;
   max-width: 100%;
-  z-index: -1;
+  height: 100vh;
+  z-index: -10;
   position: fixed;
 }
+.background {
+  top: 0;
+  left: 0;
+  background: linear-gradient(35deg, rgb(17, 42, 97), rgb(79, 9, 97));
+  width: 100%;
+  height: 100vh;
+  z-index: -10;
+}
+#easle {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: -10;
+}
 
+#name {
+  font-family: 'Courier New';
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+
+.svg {
+  font-size: 2em;
+}
+.Boot {
+  color: purple;
+}
+.Js {
+  color: orange;
+}
+.Css {
+  color: #3c9cd7
+}
+.Codepen {
+  color: white;
+}
+.Git {
+  color: #f05033;
+}
+.Trello {
+  color: blue;
+}
+.Py {
+  color: green;
+}
+.React {
+  color: #61dafb;
+} 
+  @media (prefers-reduced-motion: no-preference) {
+    .React {
+      animation: React-spin infinite 20s linear;
+    }
+  }
+  @keyframes React-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+.Html {
+  color: #f16529
+}
+.Md {
+  color: brown;
+}
+.Ts {
+  color: #0062f5
+}
+.Gitter {
+  color: #be0053
+}
+
+/****** animations ******/
+.svg-holder {
+  margin: 1em;
+}
+/****** PROJECTS ******/
 .card-deck {
   margin: 0;
-  padding: 0;
+  padding: 2em 0;
+  overflow: hidden;
+}
+
+.hovered-img {
+  transition: transform .5s ease;
+  transform: scale(1.22);
+}
+
+/****** CONTACT ******/
+.icon-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.holder {
+  color: white;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 2em;
+  width: 5em;
+  height: 5em;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 0.1rem;
+  -webkit-transition: width 1s ease;
+  transition: width 1s ease;
+}
+.icon {
+  font-size: 4em;
+  margin: 3rem 2rem 3rem 1rem;
+  border-radius: 50%;
+}
+.GH {
+  background-color: black;
+}
+.Li {
+  background-color: #0062f5;
+}
+.FB {
+  background-color: rgb(0, 89, 255);
+}
+.fCC {
+  background-color: green;
+}
+
+.holder:hover {
+  transition: all 1s ease;
+  width: 410px;
+  border-radius: 0;
+  padding-right: 1rem;
 }
