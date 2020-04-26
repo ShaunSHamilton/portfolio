@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import RandPoundApp from './RandPoundApp.png'
+import NetskipCode from './NetskipCode.png'
+import UltimateGuitarCode from './UltimateGuitarCode.png'
 import { faGithub, faFacebook, faFreeCodeCamp, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTypescript } from './faTypescript';
@@ -42,18 +45,18 @@ const Nav = (props) => {
     <div className="pos-f-t fixed-top">
       <div className={"collapse " + (isToggled ? 'show' : '')} id="navbarToggleExternalContent">
         <div className="bg-dark p-4">
-          <a className="nav-link h3 text-success" href="#about" onClick={toggleNav}>About</a>
-          <a className="nav-link h3 text-success" href="#projects" onClick={toggleNav}>Projects</a>
-          <a className="nav-link h3 text-success" href="#contact" onClick={toggleNav}>Contact</a>
+          <a className="nav-link h3 text-success" tabIndex="5" href="#about" onClick={toggleNav}>About</a>
+          <a className="nav-link h3 text-success" tabIndex="6" href="#projects" onClick={toggleNav}>Projects</a>
+          <a className="nav-link h3 text-success" tabIndex="7" href="#contact" onClick={toggleNav}>Contact</a>
         </div>
       </div>
       <nav className="navbar navbar-dark justify-content-space-between bg-dark">
         <div className="btn-group">
-          <button type="button" id="btn-default" className={"btn btn-secondary" + (props.selected === 1 ? " active" : "")} onClick={props.handleDefault}>Default</button>
-          <button type="button" id="btn-pro" className={"btn btn-secondary" + (props.selected === 2 ? " active" : "")} onClick={props.handlePro}>Professional</button>
-          <button type="button" id="btn-retro" className={"btn btn-secondary" + (props.selected === 3 ? " active" : "")} onClick={props.handleRetro}>Retro</button>
+          <button type="button" tabIndex="1" id="btn-default" className={"btn btn-secondary" + (props.selected === 1 ? " active" : "")} onClick={props.handleDefault}>Default</button>
+          <button type="button" tabIndex="2" id="btn-pro" className={"btn btn-secondary" + (props.selected === 2 ? " active" : "")} onClick={props.handlePro}>Professional</button>
+          <button type="button" tabIndex="3" id="btn-retro" className={"btn btn-secondary" + (props.selected === 3 ? " active" : "")} onClick={props.handleRetro}>Retro</button>
         </div>
-        <button className="navbar-toggler" type="button" onClick={toggleNav} aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler" tabIndex="4" type="button" onClick={toggleNav} aria-expanded={isToggled} aria-label="Toggle navigation" data-toggle="show" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent">
           <span className="navbar-toggler-icon"></span>
         </button>
       </nav>
@@ -111,11 +114,18 @@ const About = (props) => {
 //-----------------------------------------
 
 const ProjectDeck = () => {
+  const projects = [{ title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
+  { title: "NetSkip Browser Extension", text: "Browser extension that skips the intros of Netflix series", img: NetskipCode, href: "https://github.com/Sky020/NetSkip" },
+  { title: "Rand-Pound Exchange Tracker", text: "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate", img: RandPoundApp, href: "https://github.com/Sky020/Rand-Pound-Exchanger" },
+  { title: "MarkDown Previewer", text: "Text input that translates MarkDown", img: "https://codepen.io/sky020/pen/XWmbpzL/image/large.png", href: "https://codepen.io/sky020/full/XWmbpzL" },
+  { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API", img: "https://codepen.io/sky020/pen/xxGjWGJ/image/large.png", href: "https://codepen.io/sky020/full/xxGjWGJ" },
+  { title: "D3 Bar Chart", text: "Bar chart of US GDP using D3.js", img: "https://codepen.io/sky020/pen/ExVKBJd/image/large.png", href: "https://codepen.io/sky020/full/ExVKBJd" },
+  ]
   return (
-    <div className="card-deck" id="projects">
-      <ProjectCard href={"https://codepen.io/sky020/full/XWmbpzL"} img={"https://codepen.io/sky020/pen/XWmbpzL/image/large.png"} title={"MarDown Previewer"} />
-      <ProjectCard href={"https://codepen.io/sky020/full/xxGjWGJ"} img={"https://codepen.io/sky020/pen/xxGjWGJ/image/large.png"} title={"Random Quote Generator"} />
-      <ProjectCard href={"https://codepen.io/sky020/full/ExVKBJd"} img={"https://codepen.io/sky020/pen/ExVKBJd/image/large.png"} title={"D3 Bar Chart"} />
+    <div className="card-deck flex-sm-column flex-lg-row flex-wrap" id="projects">
+      <header className="header">
+        {projects.map((project, i) => <ProjectCard title={project.title} text={project.text} img={project.img} href={project.href} key={i} />)}
+      </header>
     </div>
   )
 }
@@ -130,15 +140,16 @@ const ProjectCard = (props) => {
     setIsHovered(false);
   }
   return (
-    <div className={"card shadow m-sm-4" + (isHovered ? " hovered-img" : "")} onMouseEnter={handleHover} onMouseLeave={handleUnhover}>
-      <img className={"card-img-top"} src={props.img} alt="Card image cap"></img>
-      <div className={"card-body"}>
-        <h4 className="card-title">{props.title}</h4>
+    <div className={"card shadow m-5 m-lg-3" + (isHovered ? " hovered-img" : "")} onMouseEnter={handleHover} onMouseLeave={handleUnhover}>
+      <div className="card-holder">
+        <img className="card-img-top" src={props.img} alt="Card Cap"></img>
+      </div>
+      <div className="card-body">
+        <h1 className="card-title">{props.title}</h1>
         <p className="card-text">
-          Some quick example text to build on the card title
-          and make up the bulk of the card's content.
-          </p>
-        <a href={props.href} className="btn btn-primary">View on CodePen</a>
+          {props.text}
+        </p>
+        <a href={props.href} className="btn btn-purple">View</a>
       </div>
     </div>
   )
@@ -151,21 +162,23 @@ const ProjectCard = (props) => {
 const Contact = () => {
   return (
     <div className="container-fluid" id="contact">
-      <div className="col">
-        <div className="row-lg"><a href="https://www.github.com/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faGithub} className="icon GH" /> GitHub</div></a></div>
-        <div className="row-lg"><a href="https://www.freecodecamp.org/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFreeCodeCamp} className="icon fCC" /> freeCodeCamp</div></a></div>
-        <div className="row-lg"><a href="https://www.linkedin.com/in/shaun-hamilton-411636114" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faLinkedin} className="icon Li" /> LinkedIn</div></a></div>
-        <div className="row-lg"><a href="https://www.facebook.com/shaun.s.hamilton" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFacebook} className="icon FB" /> Facebook</div></a></div>
-      </div>
+      <header className="header">
+        <div className="col">
+          <div className="row-lg"><a href="https://www.github.com/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faGithub} className="icon GH" /> GitHub</div></a></div>
+          <div className="row-lg"><a href="https://www.freecodecamp.org/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFreeCodeCamp} className="icon fCC" /> freeCodeCamp</div></a></div>
+          <div className="row-lg"><a href="https://www.linkedin.com/in/shaun-hamilton-411636114" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faLinkedin} className="icon Li" /> LinkedIn</div></a></div>
+          <div className="row-lg"><a href="https://www.facebook.com/shaun.s.hamilton" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFacebook} className="icon FB" /> Facebook</div></a></div>
+        </div>
+      </header>
     </div>
   )
 }
 
 export default App;
 
-//-----------------------
+//-----------------------------------
 //Canvas
-//-----------------------
+//-----------------------------------
 const Canvas = (props) => {
   const [colours, setColours] = React.useState([]);
   function loaded() {
@@ -174,7 +187,7 @@ const Canvas = (props) => {
       width = canvas.width = window.innerWidth,
       height = canvas.height = window.innerHeight,
       particles = [],
-      particleNum = 50;
+      particleNum = 30;
     ctx.clearRect(0, 0, width, height);
     window.onresize = () => {
       width = canvas.width = window.innerWidth;
@@ -232,7 +245,7 @@ const Canvas = (props) => {
   React.useEffect(() => {
     setColours(props.colours);
     colours.length > 0 && loaded()
-  })
+  }, [props.colours, colours.length, loaded])
   return (
     <div id="easle" className="background">
       {colours.length > 0 && <canvas id="canvas" className="canvas"></canvas>}
