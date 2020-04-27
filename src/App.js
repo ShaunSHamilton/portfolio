@@ -6,6 +6,7 @@ import UltimateGuitarCode from './UltimateGuitarCode.png'
 import { faGithub, faFacebook, faFreeCodeCamp, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTypescript } from './faTypescript';
+import { faMATLAB } from './faMATLAB';
 
 const App = () => {
   const [colours, setColours] = React.useState([])
@@ -42,15 +43,15 @@ const Nav = (props) => {
 
   const toggleNav = () => setIsToggled(!isToggled);
   return (
-    <div className="pos-f-t fixed-top">
+    <div className="pos-f-t fixed-top" id="navbar">
       <div className={"collapse " + (isToggled ? 'show' : '')} id="navbarToggleExternalContent">
-        <div className="bg-dark p-4">
-          <a className="nav-link h3 text-success" tabIndex="5" href="#about" onClick={toggleNav}>About</a>
-          <a className="nav-link h3 text-success" tabIndex="6" href="#projects" onClick={toggleNav}>Projects</a>
-          <a className="nav-link h3 text-success" tabIndex="7" href="#contact" onClick={toggleNav}>Contact</a>
+        <div className="p-4">
+          <a className="nav-link h3" tabIndex="5" href="#about" onClick={toggleNav}>About</a>
+          <a className="nav-link h3" tabIndex="6" href="#projects" onClick={toggleNav}>Projects</a>
+          <a className="nav-link h3" tabIndex="7" href="#contact" onClick={toggleNav}>Contact</a>
         </div>
       </div>
-      <nav className="navbar navbar-dark justify-content-space-between bg-dark">
+      <nav className="navbar navbar-dark justify-content-space-between">
         <div className="btn-group">
           <button type="button" tabIndex="1" id="btn-default" className={"btn btn-secondary" + (props.selected === 1 ? " active" : "")} onClick={props.handleDefault}>Default</button>
           <button type="button" tabIndex="2" id="btn-pro" className={"btn btn-secondary" + (props.selected === 2 ? " active" : "")} onClick={props.handlePro}>Professional</button>
@@ -87,25 +88,26 @@ const About = (props) => {
       <header className="App-header">
         <Canvas colours={props.colours} />
         <div id="name">Shaun Hamilton</div>
-        <div className="container-fluid row justify-content-center border-primary">
-          <div id="JavaScript" className="svg-holder"><FontAwesomeIcon className="svg Js" icon={faJsSquare} /></div>
-          <div id="React" className="svg-holder"><FontAwesomeIcon className="svg React" icon={faReact} /></div>
-          <div id="Python" className="svg-holder"><FontAwesomeIcon className="svg Py" icon={faPython} /></div>
-          <div id="BootStrap" className="svg-holder"><FontAwesomeIcon className="svg Boot" icon={faBootstrap} /></div>
-          <div id="CSS" className="svg-holder"><FontAwesomeIcon className="svg Css" icon={faCss3} /></div>
-          <div id="TypeScript" className="svg-holder"><FontAwesomeIcon className="svg Ts" icon={faTypescript} /></div>
-          <div id="CodePen" className="svg-holder"><FontAwesomeIcon className="svg Codepen" icon={faCodepen} /></div>
-          <div id="Git" className="svg-holder"><FontAwesomeIcon className="svg Git" icon={faGit} /></div>
-          <div id="HTML" className="svg-holder"><FontAwesomeIcon className="svg Html" icon={faHtml5} /></div>
-          <div id="MarkDown" className="svg-holder"><FontAwesomeIcon className="svg Md" icon={faMarkdown} /></div>
-          <div id="Trello" className="svg-holder"><FontAwesomeIcon className="svg Trello" icon={faTrello} /></div>
-          <div id="Gitter" className="svg-holder"><FontAwesomeIcon className="svg Gitter" icon={faGitter} /></div>
+        <div className="container-fluid row justify-content-center">
+          <div id="JavaScript" className="svg-holder tool"><FontAwesomeIcon className="svg Js" icon={faJsSquare} /><span className="tooltiptext">JavaScript</span></div>
+          <div id="React" className="svg-holder tool"><FontAwesomeIcon className="svg React" icon={faReact} /><span className="tooltiptext">React</span></div>
+          <div id="Python" className="svg-holder tool"><FontAwesomeIcon className="svg Py" icon={faPython} /><span className="tooltiptext">Python</span></div>
+          <div id="BootStrap" className="svg-holder tool"><FontAwesomeIcon className="svg Boot" icon={faBootstrap} /><span className="tooltiptext">BootStrap</span></div>
+          <div id="CSS" className="svg-holder tool"><FontAwesomeIcon className="svg Css" icon={faCss3} /><span className="tooltiptext">CSS</span></div>
+          <div id="TypeScript" className="svg-holder tool"><FontAwesomeIcon className="svg Ts" icon={faTypescript} /><span className="tooltiptext">TypeScript</span></div>
+          <div id="CodePen" className="svg-holder tool"><FontAwesomeIcon className="svg Codepen" icon={faCodepen} /><span className="tooltiptext">CodePen</span></div>
+          <div id="Git" className="svg-holder tool"><FontAwesomeIcon className="svg Git" icon={faGit} /><span className="tooltiptext">Git</span></div>
+          <div id="HTML" className="svg-holder tool"><FontAwesomeIcon className="svg Html" icon={faHtml5} /><span className="tooltiptext">HTML</span></div>
+          <div id="MarkDown" className="svg-holder tool"><FontAwesomeIcon className="svg Md" icon={faMarkdown} /><span className="tooltiptext">MarkDown</span></div>
+          <div id="Trello" className="svg-holder tool"><FontAwesomeIcon className="svg Trello" icon={faTrello} /><span className="tooltiptext">Trello</span></div>
+          <div id="Gitter" className="svg-holder tool"><FontAwesomeIcon className="svg Gitter" icon={faGitter} /><span className="tooltiptext">Gitter</span></div>
+          <div id="MATLAB" className="svg-holder tool"><FontAwesomeIcon className="svg MATLAB" icon={faMATLAB} /><span className="tooltiptext">MATLAB</span></div>
         </div>
-        <p>
+        <p id="para">
           Mechanical Engineering Student, Student Ambassador, and freeCodeCamp Moderator
         </p>
       </header>
-    </div>
+    </div >
   )
 }
 
@@ -117,8 +119,8 @@ const ProjectDeck = () => {
   const projects = [{ title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
   { title: "NetSkip Browser Extension", text: "Browser extension that skips the intros of Netflix series", img: NetskipCode, href: "https://github.com/Sky020/NetSkip" },
   { title: "Rand-Pound Exchange Tracker", text: "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate", img: RandPoundApp, href: "https://github.com/Sky020/Rand-Pound-Exchanger" },
-  { title: "MarkDown Previewer", text: "Text input that translates MarkDown", img: "https://codepen.io/sky020/pen/XWmbpzL/image/large.png", href: "https://codepen.io/sky020/full/XWmbpzL" },
-  { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API", img: "https://codepen.io/sky020/pen/xxGjWGJ/image/large.png", href: "https://codepen.io/sky020/full/xxGjWGJ" },
+  { title: "MarkDown Previewer", text: "React with Marked text input that translates MarkDown", img: "https://codepen.io/sky020/pen/XWmbpzL/image/large.png", href: "https://codepen.io/sky020/full/XWmbpzL" },
+  { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API using React and jQuery", img: "https://codepen.io/sky020/pen/xxGjWGJ/image/large.png", href: "https://codepen.io/sky020/full/xxGjWGJ" },
   { title: "D3 Bar Chart", text: "Bar chart of US GDP using D3.js", img: "https://codepen.io/sky020/pen/ExVKBJd/image/large.png", href: "https://codepen.io/sky020/full/ExVKBJd" },
   ]
   return (

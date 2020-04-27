@@ -36,6 +36,15 @@
 /* #btn-default {
 
 } */
+#navbar {
+  background-color: black;
+}
+.nav-link {
+  color: #28a745;
+}
+.nav-link:hover {
+  color: #22ff33;
+}
 #btn-pro {
   background-color: #222
 }
@@ -77,6 +86,30 @@
   font-weight: 600;
 }
 
+.tool {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+
+  /* Position the tooltip */
+  position: relative;
+  top: -5%;
+  z-index: 1;
+}
+
+.tool:hover .tooltiptext {
+  visibility: visible;
+}
 
 .svg {
   font-size: 2em;
@@ -130,10 +163,17 @@
 .Gitter {
   color: #be0053
 }
+.MATLAB {
+  color: #b85300;
+  transform: rotate(180deg);
+}
 
-/****** animations ******/
 .svg-holder {
-  margin: 1em;
+  margin: auto;
+}
+
+#para {
+  margin-top: 1.5em;
 }
 /****** PROJECTS ******/
 .card-deck {
@@ -152,6 +192,10 @@
   color: white;
   font-weight: 600;
   font-size: 1.2em;
+}
+.btn-purple:hover {
+  color: white;
+  background-color: #347C98;
 }
 
 .card-holder {
