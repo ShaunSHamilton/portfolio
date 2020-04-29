@@ -3,7 +3,9 @@ import './App.css';
 import RandPoundApp from './RandPoundApp.png'
 import NetskipCode from './NetskipCode.png'
 import UltimateGuitarCode from './UltimateGuitarCode.png'
-import { faGithub, faFacebook, faFreeCodeCamp, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
+import MarkDown from './MarkDown.png'
+import RandomQuoteMachine from './RandomQuoteMachine.png'
+import { faGithub, faNode, faNodeJs, faNpm, faFacebook, faFreeCodeCamp, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTypescript } from './faTypescript';
 import { faMATLAB } from './faMATLAB';
@@ -27,7 +29,7 @@ const App = () => {
   return (
     <div className="App">
       <Nav handleDefault={handleDefault} handlePro={handlePro} handleRetro={handleRetro} selected={selected} />
-      <About colours={colours} />
+      <About anim={selected === 3} colours={colours} />
       <ProjectDeck />
       <Contact />
     </div >
@@ -70,36 +72,26 @@ const Nav = (props) => {
 //-----------------------------------------
 
 const About = (props) => {
-  // Get all icons
-  // const icons = ["BootStrap", "JavaScript", "CSS", "TypeScript", "CodePen", "Git", "HTML", "MarkDown", "React", "Python", "Trello", "Gitter"];
-
-  // React.useEffect(() => {
-  //   for (let i in icons) {
-  //     let ele = document.getElementById(icons[i])
-  //     console.log(i)
-  //     let top = Math.sin(Math.random() * Math.PI) * i * 80;
-  //     let left = Math.cos(Math.random() * Math.PI) * i * 80;
-  //     ele.style.top = `${top}px`;
-  //     ele.style.left = `${left}px`;
-  //   }
-  // });
   return (
     <div id="about">
       <header className="App-header">
         <Canvas colours={props.colours} />
         <div id="name">Shaun Hamilton</div>
-        <div className="container-fluid row justify-content-center">
+        <div className={"container-fluid row justify-content-center" + (props.anim ? " anim" : "")}>
           <div id="JavaScript" className="svg-holder tool"><FontAwesomeIcon className="svg Js" icon={faJsSquare} /><span className="tooltiptext">JavaScript</span></div>
-          <div id="React" className="svg-holder tool"><FontAwesomeIcon className="svg React" icon={faReact} /><span className="tooltiptext">React</span></div>
-          <div id="Python" className="svg-holder tool"><FontAwesomeIcon className="svg Py" icon={faPython} /><span className="tooltiptext">Python</span></div>
           <div id="BootStrap" className="svg-holder tool"><FontAwesomeIcon className="svg Boot" icon={faBootstrap} /><span className="tooltiptext">BootStrap</span></div>
+          <div id="Node" className="svg-holder tool"><FontAwesomeIcon className="svg Node" icon={faNode} /><span className="tooltiptext">Node</span></div>
           <div id="CSS" className="svg-holder tool"><FontAwesomeIcon className="svg Css" icon={faCss3} /><span className="tooltiptext">CSS</span></div>
           <div id="TypeScript" className="svg-holder tool"><FontAwesomeIcon className="svg Ts" icon={faTypescript} /><span className="tooltiptext">TypeScript</span></div>
           <div id="CodePen" className="svg-holder tool"><FontAwesomeIcon className="svg Codepen" icon={faCodepen} /><span className="tooltiptext">CodePen</span></div>
+          <div id="Python" className="svg-holder tool"><FontAwesomeIcon className="svg Py" icon={faPython} /><span className="tooltiptext">Python</span></div>
+          <div id="React" className="svg-holder tool"><FontAwesomeIcon className="svg React" icon={faReact} /><span className="tooltiptext">React</span></div>
           <div id="Git" className="svg-holder tool"><FontAwesomeIcon className="svg Git" icon={faGit} /><span className="tooltiptext">Git</span></div>
           <div id="HTML" className="svg-holder tool"><FontAwesomeIcon className="svg Html" icon={faHtml5} /><span className="tooltiptext">HTML</span></div>
           <div id="MarkDown" className="svg-holder tool"><FontAwesomeIcon className="svg Md" icon={faMarkdown} /><span className="tooltiptext">MarkDown</span></div>
+          <div id="Npm" className="svg-holder tool"><FontAwesomeIcon className="svg Npm" icon={faNpm} /><span className="tooltiptext">NPM</span></div>
           <div id="Trello" className="svg-holder tool"><FontAwesomeIcon className="svg Trello" icon={faTrello} /><span className="tooltiptext">Trello</span></div>
+          <div id="NodeJs" className="svg-holder tool"><FontAwesomeIcon className="svg NodeJs" icon={faNodeJs} /><span className="tooltiptext">NodeJs</span></div>
           <div id="Gitter" className="svg-holder tool"><FontAwesomeIcon className="svg Gitter" icon={faGitter} /><span className="tooltiptext">Gitter</span></div>
           <div id="MATLAB" className="svg-holder tool"><FontAwesomeIcon className="svg MATLAB" icon={faMATLAB} /><span className="tooltiptext">MATLAB</span></div>
         </div>
@@ -119,8 +111,8 @@ const ProjectDeck = () => {
   const projects = [{ title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
   { title: "NetSkip Browser Extension", text: "Browser extension that skips the intros of Netflix series", img: NetskipCode, href: "https://github.com/Sky020/NetSkip" },
   { title: "Rand-Pound Exchange Tracker", text: "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate", img: RandPoundApp, href: "https://github.com/Sky020/Rand-Pound-Exchanger" },
-  { title: "MarkDown Previewer", text: "React with Marked text input that translates MarkDown", img: "https://codepen.io/sky020/pen/XWmbpzL/image/large.png", href: "https://codepen.io/sky020/full/XWmbpzL" },
-  { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API using React and jQuery", img: "https://codepen.io/sky020/pen/xxGjWGJ/image/large.png", href: "https://codepen.io/sky020/full/xxGjWGJ" },
+  { title: "MarkDown Previewer", text: "React with Marked text input that translates MarkDown", img: MarkDown, href: "https://codepen.io/sky020/full/XWmbpzL" },
+  { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API using React and jQuery", img: RandomQuoteMachine, href: "https://codepen.io/sky020/full/xxGjWGJ" },
   { title: "D3 Bar Chart", text: "Bar chart of US GDP using D3.js", img: "https://codepen.io/sky020/pen/ExVKBJd/image/large.png", href: "https://codepen.io/sky020/full/ExVKBJd" },
   ]
   return (
@@ -163,13 +155,13 @@ const ProjectCard = (props) => {
 
 const Contact = () => {
   return (
-    <div className="container-fluid" id="contact">
+    <div className="container-fluid con-1" id="contact">
       <header className="header">
-        <div className="col">
-          <div className="row-lg"><a href="https://www.github.com/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faGithub} className="icon GH" /> GitHub</div></a></div>
-          <div className="row-lg"><a href="https://www.freecodecamp.org/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFreeCodeCamp} className="icon fCC" /> freeCodeCamp</div></a></div>
-          <div className="row-lg"><a href="https://www.linkedin.com/in/shaun-hamilton-411636114" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faLinkedin} className="icon Li" /> LinkedIn</div></a></div>
-          <div className="row-lg"><a href="https://www.facebook.com/shaun.s.hamilton" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFacebook} className="icon FB" /> Facebook</div></a></div>
+        <div className="con-2 flex-wrap">
+          <div className="flex-sm-row"><a href="https://www.github.com/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faGithub} className="icon GH" /> GitHub</div></a></div>
+          <div className="flex-sm-row"><a href="https://www.freecodecamp.org/sky020" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFreeCodeCamp} className="icon fCC" /> freeCodeCamp</div></a></div>
+          <div className="flex-sm-row"><a href="https://www.linkedin.com/in/shaun-hamilton-411636114" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faLinkedin} className="icon Li" /> LinkedIn</div></a></div>
+          <div className="flex-sm-row"><a href="https://www.facebook.com/shaun.s.hamilton" className="icon-btn"><div className="holder"><FontAwesomeIcon icon={faFacebook} className="icon FB" /> Facebook</div></a></div>
         </div>
       </header>
     </div>
@@ -232,10 +224,7 @@ const Canvas = (props) => {
         ctx.restore();
       }
     }
-    if (colours.length > 0) {
-      render();
-    }
-
+    render();
     function render() {
       ctx.fillStyle = 'hsla(260,40%,5%,0.2)';
       ctx.fillRect(0, 0, width, height);

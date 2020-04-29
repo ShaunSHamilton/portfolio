@@ -114,6 +114,13 @@
 .svg {
   font-size: 2em;
 }
+.anim {
+  animation: wave 1.5s alternate infinite ease-in-out;
+}
+@keyframes wave {
+  to { transform: translatey(10px);}
+}
+
 .Boot {
   color: purple;
 }
@@ -139,7 +146,7 @@
   color: #61dafb;
 } 
   @media (prefers-reduced-motion: no-preference) {
-    .React {
+    .React, .Py {
       animation: React-spin infinite 20s linear;
     }
   }
@@ -166,6 +173,12 @@
 .MATLAB {
   color: #b85300;
   transform: rotate(180deg);
+}
+.Node {
+  color: black;
+}
+.NodeJs {
+  color: #77b063;
 }
 
 .svg-holder {
@@ -233,10 +246,23 @@
   -webkit-transition: max-width 1s ease;
   transition: max-width 1s ease;
 }
+
 .icon {
   font-size: 4em;
   margin: 3rem 2rem 3rem 1rem;
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .icon {
+    font-size: 3em;
+    margin: 3rem 1rem 0rem 1rem;
+  }
+  .holder {
+    overflow: visible;
+    width: fit-content;
+    flex-direction: column;
+  }
 }
 .GH {
   background-color: black;
