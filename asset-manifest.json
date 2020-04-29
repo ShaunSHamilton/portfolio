@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.aa6fe849.chunk.css",
-    "main.js": "/portfolio/static/js/main.6a4b236b.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.6a4b236b.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.a056729f.chunk.css",
+    "main.js": "/portfolio/static/js/main.6e0b33f5.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.6e0b33f5.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.d597d31e.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.d597d31e.js.map",
     "static/css/2.74189dbb.chunk.css": "/portfolio/static/css/2.74189dbb.chunk.css",
-    "static/js/2.04bc796a.chunk.js": "/portfolio/static/js/2.04bc796a.chunk.js",
-    "static/js/2.04bc796a.chunk.js.map": "/portfolio/static/js/2.04bc796a.chunk.js.map",
+    "static/js/2.0c25f3f6.chunk.js": "/portfolio/static/js/2.0c25f3f6.chunk.js",
+    "static/js/2.0c25f3f6.chunk.js.map": "/portfolio/static/js/2.0c25f3f6.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.f134c54e0e15472fe80ccb4e7dcb5560.js": "/portfolio/precache-manifest.f134c54e0e15472fe80ccb4e7dcb5560.js",
+    "precache-manifest.a8adff293b2beadbbbd63559d23d0559.js": "/portfolio/precache-manifest.a8adff293b2beadbbbd63559d23d0559.js",
     "service-worker.js": "/portfolio/service-worker.js",
     "static/css/2.74189dbb.chunk.css.map": "/portfolio/static/css/2.74189dbb.chunk.css.map",
-    "static/css/main.aa6fe849.chunk.css.map": "/portfolio/static/css/main.aa6fe849.chunk.css.map",
-    "static/js/2.04bc796a.chunk.js.LICENSE.txt": "/portfolio/static/js/2.04bc796a.chunk.js.LICENSE.txt",
+    "static/css/main.a056729f.chunk.css.map": "/portfolio/static/css/main.a056729f.chunk.css.map",
+    "static/js/2.0c25f3f6.chunk.js.LICENSE.txt": "/portfolio/static/js/2.0c25f3f6.chunk.js.LICENSE.txt",
+    "static/media/MarkDown.png": "/portfolio/static/media/MarkDown.086404dd.png",
     "static/media/NetskipCode.png": "/portfolio/static/media/NetskipCode.19e88e56.png",
     "static/media/RandPoundApp.png": "/portfolio/static/media/RandPoundApp.c7869993.png",
+    "static/media/RandomQuoteMachine.png": "/portfolio/static/media/RandomQuoteMachine.32f5f353.png",
     "static/media/UltimateGuitarCode.png": "/portfolio/static/media/UltimateGuitarCode.002d4199.png"
   },
   "entrypoints": [
     "static/js/runtime-main.d597d31e.js",
     "static/css/2.74189dbb.chunk.css",
-    "static/js/2.04bc796a.chunk.js",
-    "static/css/main.aa6fe849.chunk.css",
-    "static/js/main.6a4b236b.chunk.js"
+    "static/js/2.0c25f3f6.chunk.js",
+    "static/css/main.a056729f.chunk.css",
+    "static/js/main.6e0b33f5.chunk.js"
   ]
 }
