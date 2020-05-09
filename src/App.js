@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import RandPoundApp from './RandPoundApp.png'
+import PotterPlayer from './PotterPlayer.png'
 import NetskipCode from './NetskipCode.png'
 import UltimateGuitarCode from './UltimateGuitarCode.png'
 import MarkDown from './MarkDown.png'
@@ -108,7 +109,8 @@ const About = (props) => {
 //-----------------------------------------
 
 const ProjectDeck = () => {
-  const projects = [{ title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
+  const projects = [{ title: "Potter's Player", text: "Full-Stack MERN application to play Potter's Wheel Sermons", img: PotterPlayer, href: "https://potter-player.glitch.me" },
+  { title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
   { title: "NetSkip Browser Extension", text: "Browser extension that skips the intros of Netflix series", img: NetskipCode, href: "https://github.com/Sky020/NetSkip" },
   { title: "Rand-Pound Exchange Tracker", text: "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate", img: RandPoundApp, href: "https://github.com/Sky020/Rand-Pound-Exchanger" },
   { title: "MarkDown Previewer", text: "React with Marked text input that translates MarkDown", img: MarkDown, href: "https://codepen.io/sky020/full/XWmbpzL" },
