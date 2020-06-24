@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import RandPoundApp from './RandPoundApp.png'
+import GardenPlanner from './GardenPlanner.png'
 import PotterPlayer from './PotterPlayer.png'
 import NetskipCode from './NetskipCode.png'
 import UltimateGuitarCode from './UltimateGuitarCode.png'
 import MarkDown from './MarkDown.png'
 import RandomQuoteMachine from './RandomQuoteMachine.png'
-import { faGithub, faNode, faNodeJs, faNpm, faFacebook, faFreeCodeCamp, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
+import EnergyTracker from './EnergyTracker.png'
+import JavaScriptCalc from './JavaScriptCalc.png'
+import { faGithub, faNode, faNodeJs, faNpm, faFacebook, faFreeCodeCamp, faUbuntu, faLinkedin, faCss3, faJsSquare, faReact, faHtml5, faBootstrap, faPython, faMarkdown, faCodepen, faGit, faGitter, faTrello } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTypescript } from './faTypescript';
 import { faMATLAB } from './faMATLAB';
@@ -89,6 +92,7 @@ const About = (props) => {
           <div id="React" className="svg-holder tool"><FontAwesomeIcon className="svg React" icon={faReact} /><span className="tooltiptext">React</span></div>
           <div id="Git" className="svg-holder tool"><FontAwesomeIcon className="svg Git" icon={faGit} /><span className="tooltiptext">Git</span></div>
           <div id="HTML" className="svg-holder tool"><FontAwesomeIcon className="svg Html" icon={faHtml5} /><span className="tooltiptext">HTML</span></div>
+          <div id="Ubuntu" className="svg-holder tool"><FontAwesomeIcon className="svg Html" icon={faUbuntu} /><span className="tooltiptext">Ubuntu</span></div>
           <div id="MarkDown" className="svg-holder tool"><FontAwesomeIcon className="svg Md" icon={faMarkdown} /><span className="tooltiptext">MarkDown</span></div>
           <div id="Npm" className="svg-holder tool"><FontAwesomeIcon className="svg Npm" icon={faNpm} /><span className="tooltiptext">NPM</span></div>
           <div id="Trello" className="svg-holder tool"><FontAwesomeIcon className="svg Trello" icon={faTrello} /><span className="tooltiptext">Trello</span></div>
@@ -110,12 +114,14 @@ const About = (props) => {
 
 const ProjectDeck = () => {
   const projects = [{ title: "Potter's Player", text: "Full-Stack MERN application to play Potter's Wheel Sermons", img: PotterPlayer, href: "https://potter-player.glitch.me" },
+  { title: "Garden Planner", text: "React App to find out when to sow and harvest fruits and vegetables", img: GardenPlanner, href: "https://sky020.github.io/Garden-Planner/" },
   { title: "Ultimate Guitar Scraper", text: "Python script that uses Selenium to automatically add UG tabs to my playlist", img: UltimateGuitarCode, href: "https://github.com/Sky020/UltimateGuitarScraper" },
   { title: "NetSkip Browser Extension", text: "Browser extension that skips the intros of Netflix series", img: NetskipCode, href: "https://github.com/Sky020/NetSkip" },
   { title: "Rand-Pound Exchange Tracker", text: "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate", img: RandPoundApp, href: "https://github.com/Sky020/Rand-Pound-Exchanger" },
   { title: "MarkDown Previewer", text: "React with Marked text input that translates MarkDown", img: MarkDown, href: "https://codepen.io/sky020/full/XWmbpzL" },
   { title: "Random Quote Generator", text: "Quote generator that collects data from JSON API using React and jQuery", img: RandomQuoteMachine, href: "https://codepen.io/sky020/full/xxGjWGJ" },
-  { title: "D3 Bar Chart", text: "Bar chart of US GDP using D3.js", img: "https://codepen.io/sky020/pen/ExVKBJd/image/large.png", href: "https://codepen.io/sky020/full/ExVKBJd" },
+  { title: "Energy Tracker Dashboard", text: "Basic multi-page HTML, CSS, and JavaScript webpage", img: EnergyTracker, href: "https://sky020.github.io/Energy-App/" },
+  { title: "JavaScript Calculator", text: "Calculator made using React", img: JavaScriptCalc, href: "https://codepen.io/sky020/full/rNOpOoY" },
   ]
   return (
     <div className="card-deck flex-sm-column flex-lg-row flex-wrap" id="projects">
@@ -184,7 +190,6 @@ const Canvas = (props) => {
       height = canvas.height = window.innerHeight,
       particles = [],
       particleNum = 30;
-    ctx.clearRect(0, 0, width, height);
     window.onresize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
@@ -238,7 +243,7 @@ const Canvas = (props) => {
   React.useEffect(() => {
     setColours(props.colours);
     colours.length > 0 && loaded()
-  }, [props.colours, colours.length, loaded])
+  }, [props.colours, colours])
   return (
     <div id="easle" className="background">
       {colours.length > 0 && <canvas id="canvas" className="canvas"></canvas>}
