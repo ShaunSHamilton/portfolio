@@ -4,8 +4,8 @@
   scroll-behavior: smooth;
 }
 
-.header {
-  all: inherit;
+.heading-2 {
+  color: #22ff33;
 }
 
 .App {
@@ -46,10 +46,17 @@
   color: #22ff33;
 }
 #btn-pro {
-  background-color: #222
+  background-color: #222;
 }
 #btn-retro {
-  background-image: linear-gradient(#FC600A, #FCCC1A, #B2D732, #347C98, #4424D6, #C21460);
+  background-image: linear-gradient(
+    #fc600a,
+    #fccc1a,
+    #b2d732,
+    #347c98,
+    #4424d6,
+    #c21460
+  );
   font-weight: 500;
   font-size: 1.1em;
 }
@@ -81,9 +88,10 @@
 }
 
 #name {
-  font-family: 'Courier New';
+  font-family: "Courier New";
   font-size: 3rem;
   font-weight: 600;
+  margin-top: 1.8em;
 }
 
 .tool {
@@ -118,7 +126,9 @@
   animation: wave 1.5s alternate infinite ease-in-out;
 }
 @keyframes wave {
-  to { transform: translatey(10px);}
+  to {
+    transform: translatey(10px);
+  }
 }
 
 .Boot {
@@ -128,7 +138,7 @@
   color: orange;
 }
 .Css {
-  color: #3c9cd7
+  color: #3c9cd7;
 }
 .Codepen {
   color: white;
@@ -144,31 +154,32 @@
 }
 .React {
   color: #61dafb;
-} 
-  @media (prefers-reduced-motion: no-preference) {
-    .React, .Py {
-      animation: React-spin infinite 20s linear;
-    }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .React,
+  .Py {
+    animation: React-spin infinite 20s linear;
   }
-  @keyframes React-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+}
+@keyframes React-spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .Html {
-  color: #f16529
+  color: #f16529;
 }
 .Md {
   color: brown;
 }
 .Ts {
-  color: #0062f5
+  color: #0062f5;
 }
 .Gitter {
-  color: #be0053
+  color: #be0053;
 }
 .MATLAB {
   color: #b85300;
@@ -180,6 +191,16 @@
 .NodeJs {
   color: #77b063;
 }
+.Raspberry {
+  color: #c31c4a;
+}
+.Rust {
+  color: black;
+}
+
+.white {
+  color: white;
+}
 
 .svg-holder {
   margin: auto;
@@ -190,13 +211,13 @@
 }
 /****** PROJECTS ******/
 .card-deck {
-  margin: 0;
-  padding: 2em 0;
+  /* margin: 0; */
+  /* padding: 2em 0; */
   overflow: hidden;
 }
-.card {
+/* .card {
   flex-basis: 30% !important;
-}
+} */
 .card-title {
   font-size: 1.8rem;
 }
@@ -208,7 +229,7 @@
 }
 .btn-purple:hover {
   color: white;
-  background-color: #347C98;
+  background-color: #347c98;
 }
 
 .card-holder {
@@ -218,11 +239,11 @@
 .card-img-top {
   object-fit: cover;
   object-position: 0;
-  height: 100%;  
+  height: 100%;
 }
 
 .hovered-img {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
   transform: scale(1.1);
 }
 
@@ -253,6 +274,32 @@
   border-radius: 50%;
 }
 
+/* Certifications */
+
+.title {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 400px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .title {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}
+
+/* --------------------------------------- */
+
 @media only screen and (max-width: 600px) {
   .icon {
     font-size: 3em;
@@ -277,7 +324,8 @@
   background-color: green;
 }
 
-.holder:hover, .icon-btn:focus > .holder {
+.holder:hover,
+.icon-btn:focus > .holder {
   transition: all 1s ease;
   max-width: 700px;
   border-radius: 0;
