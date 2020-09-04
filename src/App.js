@@ -121,7 +121,7 @@ const Nav = (props) => {
             href="#modules"
             onClick={toggleNav}
           >
-            University Modules
+            University Modules (Coming Soon...)
           </a>
           <a
             className="nav-link h3"
@@ -507,35 +507,101 @@ const Certifications = () => {
       dateAquired: "07/2020",
     },
   ];
+
+  const [certToShow, setCertToShow] = React.useState(0);
+
+  const handleSlideControl = (direction) => {
+    setCertToShow(
+      (CERTIFICATIONS.length + direction + certToShow) % CERTIFICATIONS.length
+    );
+  };
   return (
     <div
       id="certifications"
-      className="row w-100 m-1 justify-content-center overflow-hidden"
+      className="row mw-100 m-1 justify-content-center overflow-hidden"
     >
       <h2 className="heading-2">Certifications</h2>
-      {CERTIFICATIONS.sort(
-        (a, b) => a.dateAquired.slice(0, 2) - b.dateAquired.slice(0, 2)
-      ).map((cert, i) => (
-        <CertCard
-          title={cert.title}
-          description={cert.description}
-          link={cert.link}
-          dateAquired={cert.dateAquired}
-          key={i}
-        />
-      ))}
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide"
+        data-ride="carousel"
+      >
+        <ol className="carousel-indicators">
+          {/* <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            className="active"
+          ></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> */}
+          {CERTIFICATIONS.sort(
+            (a, b) => a.dateAquired.slice(0, 2) - b.dateAquired.slice(0, 2)
+          ).map((cert, i) => (
+            <li
+              key={i}
+              data-target="#carouselExampleIndicators"
+              data-slide-to={i}
+              className={i === certToShow ? "active" : ""}
+            ></li>
+          ))}
+        </ol>
+        <div className="carousel-inner" role="listbox">
+          {CERTIFICATIONS.sort(
+            (a, b) => a.dateAquired.slice(0, 2) - b.dateAquired.slice(0, 2)
+          ).map((cert, i) => (
+            <CertCard
+              title={cert.title}
+              description={cert.description}
+              link={cert.link}
+              dateAquired={cert.dateAquired}
+              key={i}
+              active={i === certToShow}
+            />
+          ))}
+        </div>
+        <a
+          className="carousel-control-prev justify-content-start pr-6"
+          href="#certifications"
+          role="button"
+          data-slide="prev"
+          onClick={() => handleSlideControl(-1)}
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a
+          className="carousel-control-next justify-content-end pl-6"
+          href="#certifications"
+          role="button"
+          data-slide="next"
+          onClick={() => handleSlideControl(1)}
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="sr-only">Next</span>
+        </a>
+      </div>
     </div>
   );
 };
 
 const CertCard = (props) => {
   return (
-    <div className="list-group m-1 col-lg-5">
+    <div
+      className={
+        "list-group m-2 p-5 carousel-item float-none w-auto" +
+        (props.active ? " active" : "")
+      }
+    >
       <a
         href={props.link}
-        className="list-group-item list-group-item-action flex-column align-items-start active"
+        className="list-group-item flex-column align-items-start"
       >
-        <div className="d-flex w-100 justify-content-between">
+        <div className="d-flex w-70 justify-content-between">
           <h5 className="mb-1 title">{props.title}</h5>
           <small>{props.dateAquired}</small>
         </div>
