@@ -121,7 +121,11 @@ const Nav = (props) => {
             href="#modules"
             onClick={toggleNav}
           >
-            University Modules (Coming Soon...)
+            University Modules (Coming Soon <b></b>
+            <div className="spinner-border text-danger small" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+            )
           </a>
           <a
             className="nav-link h3"
