@@ -619,15 +619,25 @@ const CertCard = (props) => {
 // UNIVERSITY MODULES SECTION
 //--------------------------------------------
 const Modules = () => {
-  const MODULES = [
-    {
-      title: "",
-      description: "",
-    },
-  ];
+  const [modules, setModules] = React.useState([]);
+  React.useEffect(() => {
+    const asyncDataFetch = async () => {
+      try {
+        const data = await fetch("../public/modules.json");
+        console.log(data);
+        const moduleJson = JSON.parse(data.data);
+        setModules(moduleJson);
+      } catch (err) {
+        console.log(err);
+        setModules([{ name: "Error", description: err }]);
+      }
+    };
+    asyncDataFetch();
+  }, []);
+
   return (
-    <div>
-      {MODULES.map((module, i) => (
+    <div id="modules">
+      {modules.map((module, i) => (
         <p key={i}>{module.title}</p>
       ))}
     </div>
