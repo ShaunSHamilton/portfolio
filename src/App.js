@@ -121,7 +121,7 @@ const Nav = (props) => {
             href="#modules"
             onClick={toggleNav}
           >
-            University Modules (Coming Soon <b></b>
+            University Modules (Under Construction <b></b>
             <div className="spinner-border text-danger small" role="status">
               <span className="sr-only">Loading...</span>
             </div>
@@ -620,26 +620,149 @@ const CertCard = (props) => {
 //--------------------------------------------
 const Modules = () => {
   const [modules, setModules] = React.useState([]);
+  const [isAscending, setIsAscending] = React.useState(false);
+  const [isFilterExpanded, setIsFilterExpanded] = React.useState(false);
+  const [isShowDesc, setIsShowDesc] = React.useState(false);
+  const [allModuleData, setAllModuleData] = React.useState([]);
+
   React.useEffect(() => {
-    const asyncDataFetch = async () => {
+    async function asyncFetchAndSort(sortFunc) {
       try {
-        const data = await fetch("../public/modules.json");
-        console.log(data);
-        const moduleJson = JSON.parse(data.data);
-        setModules(moduleJson);
+        const data = await fetch(
+          "https://raw.githubusercontent.com/Sky020/portfolio/master/public/modules.json"
+        );
+        const moduleJson = await data.json();
+        const sortedData = moduleJson.sort(sortFunc);
+        setAllModuleData(sortedData);
+        setModules(sortedData);
       } catch (err) {
         console.log(err);
+        setAllModuleData([{ name: "Error", description: err }]);
         setModules([{ name: "Error", description: err }]);
       }
-    };
-    asyncDataFetch();
+    }
+    asyncFetchAndSort((a, b) => b.year - a.year);
   }, []);
 
+  const handleAscending = () => {
+    setModules(
+      allModuleData.sort((a, b) => {
+        if (!isAscending) {
+          return a.year - b.year;
+        } else {
+          return b.year - a.year;
+        }
+      })
+    );
+    setIsAscending(!isAscending);
+  };
+
+  const handleFilter = (year) => {
+    setIsFilterExpanded(!isFilterExpanded);
+    if (year === 1) {
+      setModules(allModuleData);
+    }
+    setModules(allModuleData.filter((mod) => mod.year === year));
+  };
   return (
-    <div id="modules">
-      {modules.map((module, i) => (
-        <p key={i}>{module.title}</p>
-      ))}
+    <div id="modules" className="row">
+      <h2 className="heading-2">Modules</h2>
+      <div
+        id="btn-filter"
+        className="btn-group btn-group-sm"
+        role="group"
+        aria-label="Module Filter"
+      >
+        <button
+          type="button"
+          className="btn btn-secondary p-2 m-1"
+          onClick={handleAscending}
+        >
+          {isAscending ? "Ascending" : "Descending"} Year
+        </button>
+        <div
+          className={"btn-group" + (isFilterExpanded ? " show" : "")}
+          role="group"
+        >
+          <button
+            id="yearFilter"
+            type="button"
+            className="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded={isFilterExpanded}
+            onClick={() => setIsFilterExpanded(!isFilterExpanded)}
+          >
+            Filter
+          </button>
+          <div
+            className={"dropdown-menu" + (isFilterExpanded ? " show" : "")}
+            aria-labelledby="yearFilter"
+          >
+            <a
+              className="dropdown-item"
+              href="#!"
+              onClick={() => handleFilter(1)}
+            >
+              All
+            </a>
+            <a
+              className="dropdown-item"
+              href="#!"
+              onClick={() => handleFilter(2)}
+            >
+              Year 2
+            </a>
+            <a
+              className="dropdown-item"
+              href="#!"
+              onClick={() => handleFilter(3)}
+            >
+              Year 3
+            </a>
+            <a
+              className="dropdown-item"
+              href="#!"
+              onClick={() => handleFilter(4)}
+            >
+              Year 4
+            </a>
+            <a
+              className="dropdown-item"
+              href="#!"
+              onClick={() => handleFilter(5)}
+            >
+              Year 5
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="row card-deck justify-content-center w-100">
+        {modules.map((module, i) => (
+          <div
+            className="card col-10 m-2 m-sm-4 col-md-5 m-md-3 col-lg-4 m-lg-2"
+            key={i}
+          >
+            <div className="card-body">
+              <h4 className="card-title">{module.name}</h4>
+              {/* {isShowDesc && ( */}
+              <p
+                className={
+                  "card-text mod-description" + (isShowDesc ? "" : " d-none")
+                }
+              >
+                {module.description}
+              </p>
+              {/* )} */}
+              <button
+                onClick={() => setIsShowDesc(!isShowDesc)}
+                className={"arrow" + (isShowDesc ? " up" : " down")}
+              ></button>
+            </div>
+            <div className="card-footer">Year {module.year}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
