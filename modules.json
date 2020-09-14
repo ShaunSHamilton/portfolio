@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Software Engineering",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Heat Transfer",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Fluid Mechanics",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Instrument and Data Systems",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Thermodynamics of Engines",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Finite Element Analysis",
+    "year": 4,
+    "description": "Apply the concept of approximation in the analysis of engineering problems; Apply the Finite Element Method to practical situations, with specific emphasis on its application to planar linear elastic problems and simple heat conduction problems; Undertake, with confidence, a finite element analysis and to appreciate modelling issues such as discretisation, boundary conditions, loading and validation."
+  },
+  {
+    "name": "Mechanics of Solids",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Simulation of Engineering Systems",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Engineering Mathematics",
+    "year": 2,
+    "description": ""
+  },
+  {
+    "name": "Mechanics of Structures",
+    "year": 2,
+    "description": ""
+  },
+  {
+    "name": "Engineering Skills",
+    "year": 2,
+    "description": ""
+  },
+  {
+    "name": "Power Electronics",
+    "year": 2,
+    "description": ""
+  },
+  {
+    "name": "Dynamics",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Materials",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Design and Manufacture",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Mechanical Design",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Thermodynamics",
+    "year": 3,
+    "description": ""
+  },
+  {
+    "name": "Renewable Energy",
+    "year": 4,
+    "description": "Identify issues and challenges associated with the current development of renewable energy technologies including policies, including technical, financial and environmental risks and mitigation measures; Apply knowledge of other engineering subjects in the assessment and design of renewable energy schemes; Assess the environmental impact of renewable energy schemes; Design outline engineering solutions, including project planning and environmental impact; Create novel solutions using integrated renewable and sustainable energy technologies for a range of demand led scenarios."
+  },
+  {
+    "name": "Robotics",
+    "year": 4,
+    "description": "Apply the principles of measurement and actuation; Select the correct sensor and/or actuator for a specific robotic system application; Use sensors and actuators for information feedback and controlled robotic manipulation; Consider the limits imposed on control calculations by the sensors and actuators; Use methods for calculating the kinematics, inverse kinematics, differential kinematics and dynamics of a robot manipulator; Formulate the appropriate control structure for a robot manipulator; Calculate the appropriate path for a robot manipulator to follow; Design a robotic system for a simple task"
+  },
+  {
+    "name": "Control",
+    "year": 4,
+    "description": "Explain frequency domain, time domain and state space concepts of control systems; Use frequency domain design and analysis techniques, including Bode plots, Nyquist diagrams and the root locus method; Analyse and design feedback controllers using proportional, integral and derivative (PID) control and pole placement; Appreciate the use of MATLAB and Simulink as simulation tools for control system analysis and design; Represent continuous and discrete dynamic systems in state space form; Implement multi-variable control strategies; Model a servo motor system and design, analyse and experimentally evaluate proportional feedback control; Explain the basic concepts of digital control; Use the z-transform, perform signal analysis and identify the dynamic response of discrete signals; Describe the phenomenon of aliasing in sampled data systems, its effects and how to avoid it; Design discrete equivalent of continuous controllers by emulation, using different techniques."
+  },
+  {
+    "name": "Auto Vehicle Guidance Systems",
+    "year": 4,
+    "description": "Develop path planning systems for autonomous vehicle guidance; Design and implement obstacle avoidance methods within an autonomous guidance regime; Implement trajectory optimisation and smoothing for both discrete and continuous paths."
+  },
+  {
+    "name": "Materials Engineering",
+    "year": 4,
+    "description": "Developments in metals and polymers; Design and manufacturing of polymeric composites; Stress analysis of composites; Advances in adhesive bonding and surface engineering; Sandwich constructions; Ceramics-properties, processes and reliability."
+  },
+  {
+    "name": "Professional Practice",
+    "year": 5,
+    "description": "Prepare a business plan for a new venture start or development; Demonstrate an understanding of the processes and procedures for developing a new venture;     Analyse new venture information to identify the viability or otherwise of a proposal, including: presenting new venture ideas, its relationship to a defined market, describing the relationships between the various business functions, developing a business model; Identify and address relevant aspects of sustainability and environmental impact; Identify and contact non university support agencies; Show evidence of skills and capability in: critically engaging with and evaluating texts and journal articles, team-working, appraising the work of other students, independent analysis of management problems, communicating conclusions effectively, identifying and addressing relevant aspects of sustainability and environmental impact, practising project planning techniques, collecting and analysing market data, carrying out personal and professional planning"
+  }
+]
