@@ -201,6 +201,7 @@ const About = (props) => {
       <header className="App-header">
         <Canvas colours={props.colours} />
         <div id="name">Shaun Hamilton</div>
+        <OpenSource />
         <div
           className={
             "container-fluid row justify-content-center" +
@@ -298,6 +299,114 @@ const About = (props) => {
     </div>
   );
 };
+
+const OpenSource = () => {
+  const [contributionData, setContributionData] = React.useState({
+    numCommits: 0,
+    additions: 0,
+    deletions: 0,
+  });
+  const [progress, setProgress] = React.useState(0);
+  const commitGoal = 100;
+
+  function getProgress(prog) {
+    const bar = document.getElementById("progress-bar");
+    bar.style.width = `${prog}%`;
+
+    if (prog > 2) {
+      const spanOne = document.getElementById("first-span");
+      spanOne.style.setProperty("--disp", "block");
+      spanOne.style.backgroundColor = "green";
+    }
+    if (prog > 50) {
+      const spanTwo = document.getElementById("second-span");
+      spanTwo.style.setProperty("--disp", "block");
+      spanTwo.style.backgroundColor = "green";
+    }
+    if (prog > 96) {
+      const spanThree = document.getElementById("third-span");
+      spanThree.style.setProperty("--disp", "block");
+      spanThree.style.backgroundColor = "green";
+    }
+  }
+  React.useEffect(() => {
+    getProgress(progress);
+  }, [progress]);
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const data = await getContributions();
+        // console.log(data.data.user.contributionsCollection.pullRequestContributions.nodes)
+        const commits = data.data.user.contributionsCollection.pullRequestContributions.nodes.filter(
+          (pull) => pull.pullRequest.merged
+        ).length;
+        const mergeCommits = data.data.user.contributionsCollection.pullRequestContributions.nodes
+          .filter((pull) => pull.pullRequest.merged)
+          .map((pull) => pull.pullRequest.mergeCommit);
+        const additions = mergeCommits
+          .map((com) => com.additions)
+          .reduce((accu, curr) => curr + accu);
+        const deletions = mergeCommits
+          .map((com) => com.deletions)
+          .reduce((accu, curr) => curr + accu);
+        setContributionData({ numCommits: commits, additions, deletions });
+        setProgress((commits / commitGoal) * 100);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+  return (
+    <div id="open-source">
+      <h3>Open Source Commit Goal:</h3>
+      <div id="line-contributions">
+        <h4>Additions: {contributionData.additions}</h4>
+        <h4>Deletions: {contributionData.deletions}</h4>
+      </div>
+      <div className="progbar">
+        <div id="progress-bar">{contributionData.numCommits}</div>
+        <span id="first-span" className="checkmark"></span>
+        <span id="second-span" className="checkmark"></span>
+        <span id="third-span" className="checkmark"></span>
+      </div>
+    </div>
+  );
+};
+
+async function getContributions() {
+  const headers = {
+    Authorization: `bearer 423b9e0c27201692dd27721ee3208301f970038b`,
+  };
+  const body = {
+    query: `query {
+            user(login: "sky020") {
+              name
+              contributionsCollection {
+                pullRequestContributions(first: 100) {
+                  nodes {
+                    pullRequest {
+                      title
+                      merged
+                      mergedAt
+                      mergeCommit {
+                            additions
+                            deletions
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+  };
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers,
+  });
+  const data = await response.json();
+  return data;
+}
 
 //-----------------------------------------
 // PROJECT SECTION
