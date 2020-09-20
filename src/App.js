@@ -305,6 +305,7 @@ const OpenSource = () => {
     numCommits: 0,
     additions: 0,
     deletions: 0,
+    error: null,
   });
   const [progress, setProgress] = React.useState(0);
   const commitGoal = 100;
@@ -352,30 +353,32 @@ const OpenSource = () => {
         setContributionData({ numCommits: commits, additions, deletions });
         setProgress((commits / commitGoal) * 100);
       } catch (err) {
-        console.log(err);
+        setContributionData({ error: "API query limit reached" });
       }
     })();
   }, []);
   return (
-    <div id="open-source">
-      <h3>Open Source Commit Goal:</h3>
-      <div id="line-contributions">
-        <h4>Additions: {contributionData.additions}</h4>
-        <h4>Deletions: {contributionData.deletions}</h4>
+    !contributionData.error && (
+      <div id="open-source">
+        <h3>Open Source Commit Goal:</h3>
+        <div id="line-contributions">
+          <h4>Additions: {contributionData.additions}</h4>
+          <h4>Deletions: {contributionData.deletions}</h4>
+        </div>
+        <div className="progbar">
+          <div id="progress-bar">{contributionData.numCommits}</div>
+          <span id="first-span" className="checkmark"></span>
+          <span id="second-span" className="checkmark"></span>
+          <span id="third-span" className="checkmark"></span>
+        </div>
       </div>
-      <div className="progbar">
-        <div id="progress-bar">{contributionData.numCommits}</div>
-        <span id="first-span" className="checkmark"></span>
-        <span id="second-span" className="checkmark"></span>
-        <span id="third-span" className="checkmark"></span>
-      </div>
-    </div>
+    )
   );
 };
 
 async function getContributions() {
   const headers = {
-    Authorization: `bearer 423b9e0c27201692dd27721ee3208301f970038b`,
+    Authorization: `bearer 587cda2af11ad817ff4d842012fc23071a30033d`,
   };
   const body = {
     query: `query {
