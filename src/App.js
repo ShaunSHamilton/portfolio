@@ -303,8 +303,6 @@ const About = (props) => {
 const OpenSource = () => {
   const [contributionData, setContributionData] = React.useState({
     numCommits: 0,
-    additions: 0,
-    deletions: 0,
     error: null,
   });
   const [progress, setProgress] = React.useState(0);
@@ -337,20 +335,22 @@ const OpenSource = () => {
     (async () => {
       try {
         const data = await getContributions();
+        // console.log(data);
         // console.log(data.data.user.contributionsCollection.pullRequestContributions.nodes)
-        const commits = data.data.user.contributionsCollection.pullRequestContributions.nodes.filter(
-          (pull) => pull.pullRequest.merged
-        ).length;
-        const mergeCommits = data.data.user.contributionsCollection.pullRequestContributions.nodes
-          .filter((pull) => pull.pullRequest.merged)
-          .map((pull) => pull.pullRequest.mergeCommit);
-        const additions = mergeCommits
-          .map((com) => com.additions)
-          .reduce((accu, curr) => curr + accu);
-        const deletions = mergeCommits
-          .map((com) => com.deletions)
-          .reduce((accu, curr) => curr + accu);
-        setContributionData({ numCommits: commits, additions, deletions });
+        // const commits = data.data.user.contributionsCollection.pullRequestContributions.nodes.filter(
+        //   (pull) => pull.pullRequest.merged
+        // ).length;
+        // const mergeCommits = data.data.user.contributionsCollection.pullRequestContributions.nodes
+        //   .filter((pull) => pull.pullRequest.merged)
+        //   .map((pull) => pull.pullRequest.mergeCommit);
+        // const additions = mergeCommits
+        //   .map((com) => com.additions)
+        //   .reduce((accu, curr) => curr + accu);
+        // const deletions = mergeCommits
+        //   .map((com) => com.deletions)
+        //   .reduce((accu, curr) => curr + accu);
+        const commits = data[0].contributions;
+        setContributionData({ numCommits: commits });
         setProgress((commits / commitGoal) * 100);
       } catch (err) {
         setContributionData({ error: "API query limit reached" });
@@ -361,10 +361,10 @@ const OpenSource = () => {
     !contributionData.error && (
       <div id="open-source">
         <h3>Open Source Commit Goal:</h3>
-        <div id="line-contributions">
+        {/* <div id="line-contributions">
           <h4>Additions: {contributionData.additions}</h4>
           <h4>Deletions: {contributionData.deletions}</h4>
-        </div>
+        </div> */}
         <div className="progbar">
           <div id="progress-bar">{contributionData.numCommits}</div>
           <span id="first-span" className="checkmark"></span>
@@ -377,39 +377,67 @@ const OpenSource = () => {
 };
 
 async function getContributions() {
-  const headers = {
-    Authorization: `bearer 587cda2af11ad817ff4d842012fc23071a30033d`,
-  };
-  const body = {
-    query: `query {
-            user(login: "sky020") {
-              name
-              contributionsCollection {
-                pullRequestContributions(first: 100) {
-                  nodes {
-                    pullRequest {
-                      title
-                      merged
-                      mergedAt
-                      mergeCommit {
-                            additions
-                            deletions
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-  };
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers,
-  });
+  // const pages = [1, 2, 3];
+  // let data = [];
+
+  // async function asyncForEach(array, callback) {
+  //   for (let index = 0; index < array.length; index++) {
+  //     await callback(array[index]); //, index, array);
+  //   }
+  // }
+
+  // await asyncForEach(pages, async (page) => {
+  //   const params = { per_page: 100, page };
+  //   const urlParams = new URLSearchParams(Object.entries(params));
+
+  //   // const response = await fetch(
+  //   //   "https://api.github.com/users/sky020/events/public?" + urlParams,
+  //   //   { method: "GET" }
+  //   // )
+  //   const d = await response.json();
+  //   data.push(d);
+  //   console.log(page, data);
+  // });
+  const response = await fetch(
+    "https://api.github.com/repos/freeCodeCamp/freeCodeCamp/contributors?per_page=100"
+  );
   const data = await response.json();
-  return data;
+  return data.filter((d) => d.login === "Sky020");
 }
+// async function getContributions() {
+//   const headers = {
+//     Authorization: `bearer 587cda2af11ad817ff4d842012fc23071a30033d`,
+//   };
+//   const body = {
+//     query: `query {
+//             user(login: "sky020") {
+//               name
+//               contributionsCollection {
+//                 pullRequestContributions(first: 100) {
+//                   nodes {
+//                     pullRequest {
+//                       title
+//                       merged
+//                       mergedAt
+//                       mergeCommit {
+//                             additions
+//                             deletions
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }`,
+//   };
+//   const response = await fetch("https://api.github.com/graphql", {
+//     method: "POST",
+//     body: JSON.stringify(body),
+//     headers,
+//   });
+//   const data = await response.json();
+//   return data;
+// }
 
 //-----------------------------------------
 // PROJECT SECTION
@@ -622,7 +650,30 @@ const Certifications = () => {
         "https://www.freecodecamp.org/certification/sky020/apis-and-microservices",
       dateAquired: "07/2020",
     },
-  ];
+    {
+      title: "Blockchain with Rust",
+      description: "",
+      link:
+        "https://www.secondstate.io/certs/intro-202008/?contract=0xea0b5cf6d6fcd75a66f7c0d56162325ce776345f",
+      dateAquired: "08/2020",
+    },
+  ].sort((a, b) => {
+    if (Number(a.dateAquired.slice(3)) > Number(b.dateAquired.slice(3))) {
+      return -1;
+    } else if (
+      Number(a.dateAquired.slice(3)) < Number(b.dateAquired.slice(3))
+    ) {
+      return 1;
+    }
+    if (Number(a.dateAquired.slice(0, 2)) > Number(b.dateAquired.slice(0, 2))) {
+      return -1;
+    } else if (
+      Number(a.dateAquired.slice(0, 2)) < Number(b.dateAquired.slice(0, 2))
+    ) {
+      return 1;
+    }
+    return 0;
+  });
 
   const [certToShow, setCertToShow] = React.useState(0);
 
@@ -649,9 +700,7 @@ const Certifications = () => {
             className="active"
           ></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> */}
-          {CERTIFICATIONS.sort(
-            (a, b) => a.dateAquired.slice(0, 2) - b.dateAquired.slice(0, 2)
-          ).map((cert, i) => (
+          {CERTIFICATIONS.map((cert, i) => (
             <li
               key={i}
               data-target="#carouselExampleIndicators"
@@ -661,9 +710,7 @@ const Certifications = () => {
           ))}
         </ol>
         <div className="carousel-inner" role="listbox">
-          {CERTIFICATIONS.sort(
-            (a, b) => a.dateAquired.slice(0, 2) - b.dateAquired.slice(0, 2)
-          ).map((cert, i) => (
+          {CERTIFICATIONS.map((cert, i) => (
             <CertCard
               title={cert.title}
               description={cert.description}
@@ -734,7 +781,6 @@ const Modules = () => {
   const [modules, setModules] = React.useState([]);
   const [isAscending, setIsAscending] = React.useState(false);
   const [isFilterExpanded, setIsFilterExpanded] = React.useState(false);
-  const [isShowDesc, setIsShowDesc] = React.useState(false);
   const [allModuleData, setAllModuleData] = React.useState([]);
 
   React.useEffect(() => {
@@ -851,30 +897,34 @@ const Modules = () => {
       </div>
       <div className="row card-deck justify-content-center w-100">
         {modules.map((module, i) => (
-          <div
-            className="card col-10 m-2 m-sm-4 col-md-5 m-md-3 col-lg-4 m-lg-2"
-            key={i}
-          >
-            <div className="card-body">
-              <h4 className="card-title">{module.name}</h4>
-              {/* {isShowDesc && ( */}
-              <p
-                className={
-                  "card-text mod-description" + (isShowDesc ? "" : " d-none")
-                }
-              >
-                {module.description}
-              </p>
-              {/* )} */}
-              <button
-                onClick={() => setIsShowDesc(!isShowDesc)}
-                className={"arrow" + (isShowDesc ? " up" : " down")}
-              ></button>
-            </div>
-            <div className="card-footer">Year {module.year}</div>
-          </div>
+          <Module module={module} key={i} />
         ))}
       </div>
+    </div>
+  );
+};
+
+const Module = (props) => {
+  const [isShowDesc, setIsShowDesc] = React.useState(false);
+  return (
+    <div className="card col-10 m-2 m-sm-4 col-md-5 m-md-3 col-lg-4 m-lg-2">
+      <div className="card-body">
+        <h4 className="card-title">{props.module.name}</h4>
+        <p
+          className={
+            "card-text mod-description" + (isShowDesc ? "" : " d-none")
+          }
+        >
+          {props.module.description}
+        </p>
+        {props.module.description && (
+          <button
+            onClick={() => setIsShowDesc(!isShowDesc)}
+            className={"arrow" + (isShowDesc ? " up" : " down")}
+          ></button>
+        )}
+      </div>
+      <div className="card-footer">Year {props.module.year}</div>
     </div>
   );
 };
