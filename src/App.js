@@ -335,22 +335,16 @@ const OpenSource = () => {
     (async () => {
       try {
         const data = await getContributions();
-        // console.log(data);
-        // console.log(data.data.user.contributionsCollection.pullRequestContributions.nodes)
-        // const commits = data.data.user.contributionsCollection.pullRequestContributions.nodes.filter(
-        //   (pull) => pull.pullRequest.merged
-        // ).length;
-        // const mergeCommits = data.data.user.contributionsCollection.pullRequestContributions.nodes
-        //   .filter((pull) => pull.pullRequest.merged)
-        //   .map((pull) => pull.pullRequest.mergeCommit);
-        // const additions = mergeCommits
-        //   .map((com) => com.additions)
-        //   .reduce((accu, curr) => curr + accu);
-        // const deletions = mergeCommits
-        //   .map((com) => com.deletions)
-        //   .reduce((accu, curr) => curr + accu);
-        const commits = data[0].contributions;
-        setContributionData({ numCommits: commits });
+        console.log(data);
+
+        // const commits = data[0].contributions;
+        const commits = data.commits;
+        setContributionData({
+          numCommits: commits,
+          additions: data.additions,
+          deletions: data.deletions,
+          openPRs: data.openPRs,
+        });
         setProgress((commits / commitGoal) * 100);
       } catch (err) {
         setContributionData({ error: "API query limit reached" });
@@ -361,10 +355,10 @@ const OpenSource = () => {
     !contributionData.error && (
       <div id="open-source">
         <h3>Open Source Commit Goal:</h3>
-        {/* <div id="line-contributions">
+        <div id="line-contributions">
           <h4>Additions: {contributionData.additions}</h4>
           <h4>Deletions: {contributionData.deletions}</h4>
-        </div> */}
+        </div>
         <div className="progbar">
           <div id="progress-bar">{contributionData.numCommits}</div>
           <span id="first-span" className="checkmark"></span>
@@ -377,67 +371,18 @@ const OpenSource = () => {
 };
 
 async function getContributions() {
-  // const pages = [1, 2, 3];
-  // let data = [];
-
-  // async function asyncForEach(array, callback) {
-  //   for (let index = 0; index < array.length; index++) {
-  //     await callback(array[index]); //, index, array);
-  //   }
-  // }
-
-  // await asyncForEach(pages, async (page) => {
-  //   const params = { per_page: 100, page };
-  //   const urlParams = new URLSearchParams(Object.entries(params));
-
-  //   // const response = await fetch(
-  //   //   "https://api.github.com/users/sky020/events/public?" + urlParams,
-  //   //   { method: "GET" }
-  //   // )
-  //   const d = await response.json();
-  //   data.push(d);
-  //   console.log(page, data);
-  // });
-  const response = await fetch(
-    "https://api.github.com/repos/freeCodeCamp/freeCodeCamp/contributors?per_page=100"
-  );
+  // const response = await fetch(
+  //   "https://api.github.com/repos/freeCodeCamp/freeCodeCamp/contributors?per_page=100"
+  // );
+  // const data = await response.json();
+  // return data.filter((d) => d.login === "Sky020");
+  const response = await fetch("https://contribution-api.herokuapp.com/");
+  // const response = await fetch("http://localhost:8000/");
+  // console.log("Got response...");
   const data = await response.json();
-  return data.filter((d) => d.login === "Sky020");
+  // console.log("returning ", data);
+  return data;
 }
-// async function getContributions() {
-//   const headers = {
-//     Authorization: `bearer 587cda2af11ad817ff4d842012fc23071a30033d`,
-//   };
-//   const body = {
-//     query: `query {
-//             user(login: "sky020") {
-//               name
-//               contributionsCollection {
-//                 pullRequestContributions(first: 100) {
-//                   nodes {
-//                     pullRequest {
-//                       title
-//                       merged
-//                       mergedAt
-//                       mergeCommit {
-//                             additions
-//                             deletions
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }`,
-//   };
-//   const response = await fetch("https://api.github.com/graphql", {
-//     method: "POST",
-//     body: JSON.stringify(body),
-//     headers,
-//   });
-//   const data = await response.json();
-//   return data;
-// }
 
 //-----------------------------------------
 // PROJECT SECTION
