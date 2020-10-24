@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import RandPoundApp from "./RandPoundApp.png";
-import GardenPlanner from "./GardenPlanner.png";
-import PotterPlayer from "./PotterPlayer.png";
-import NetskipCode from "./NetskipCode.png";
-import UltimateGuitarCode from "./UltimateGuitarCode.png";
-import MarkDown from "./MarkDown.png";
-import RandomQuoteMachine from "./RandomQuoteMachine.png";
-import EnergyTracker from "./EnergyTracker.png";
-import JavaScriptCalc from "./JavaScriptCalc.png";
+import RandPoundApp from "./images/RandPoundApp.png";
+import GardenPlanner from "./images/GardenPlanner.png";
+import PotterPlayer from "./images/PotterPlayer.png";
+import NetskipCode from "./images/NetskipCode.png";
+import UltimateGuitarCode from "./images/UltimateGuitarCode.png";
+import MarkDown from "./images/MarkDown.png";
+import RandomQuoteMachine from "./images/RandomQuoteMachine.png";
+import EnergyTracker from "./images/EnergyTracker.png";
+import JavaScriptCalc from "./images/JavaScriptCalc.png";
 import {
   faRaspberryPi,
   faGithub,
@@ -37,8 +37,8 @@ import { faMATLAB } from "./faMATLAB";
 import { faRust } from "./faRust";
 
 const App = () => {
-  const [colours, setColours] = React.useState([]);
-  const [selected, setSelected] = React.useState(1);
+  const [colours, setColours] = useState([]);
+  const [selected, setSelected] = useState(1);
 
   const handleDefault = () => {
     setColours([]);
@@ -81,7 +81,7 @@ const App = () => {
 //------------------------------------------------------
 
 const Nav = (props) => {
-  const [isToggled, setIsToggled] = React.useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   const toggleNav = () => setIsToggled(!isToggled);
   return (
@@ -301,11 +301,12 @@ const About = (props) => {
 };
 
 const OpenSource = () => {
-  const [contributionData, setContributionData] = React.useState({
+  const [contributionData, setContributionData] = useState({
     numCommits: 0,
     error: null,
   });
-  const [progress, setProgress] = React.useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const commitGoal = 100;
 
   function getProgress(prog) {
@@ -328,16 +329,18 @@ const OpenSource = () => {
       spanThree.style.backgroundColor = "green";
     }
   }
-  React.useEffect(() => {
-    getProgress(progress);
-  }, [progress]);
-  React.useEffect(() => {
+  useEffect(() => {
+    if (!isLoading) {
+      getProgress(progress);
+    }
+  }, [progress, isLoading]);
+  useEffect(() => {
     (async () => {
       try {
         const data = await getContributions();
         console.log(data);
 
-        // const commits = data[0].contributions;
+        setIsLoading(false);
         const commits = data.commits;
         setContributionData({
           numCommits: commits,
@@ -352,7 +355,12 @@ const OpenSource = () => {
     })();
   }, []);
   return (
-    !contributionData.error && (
+    !contributionData.error &&
+    (isLoading ? (
+      <div className="spinner-border text-danger small" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    ) : (
       <div id="open-source">
         <h3>Open Source Commit Goal:</h3>
         <div id="line-contributions">
@@ -366,21 +374,13 @@ const OpenSource = () => {
           <span id="third-span" className="checkmark"></span>
         </div>
       </div>
-    )
+    ))
   );
 };
 
 async function getContributions() {
-  // const response = await fetch(
-  //   "https://api.github.com/repos/freeCodeCamp/freeCodeCamp/contributors?per_page=100"
-  // );
-  // const data = await response.json();
-  // return data.filter((d) => d.login === "Sky020");
   const response = await fetch("https://contribution-api.herokuapp.com/");
-  // const response = await fetch("http://localhost:8000/");
-  // console.log("Got response...");
   const data = await response.json();
-  // console.log("returning ", data);
   return data;
 }
 
@@ -470,7 +470,7 @@ const ProjectDeck = () => {
 };
 
 const ProjectCard = (props) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
     setIsHovered(true);
@@ -620,7 +620,7 @@ const Certifications = () => {
     return 0;
   });
 
-  const [certToShow, setCertToShow] = React.useState(0);
+  const [certToShow, setCertToShow] = useState(0);
 
   const handleSlideControl = (direction) => {
     setCertToShow(
@@ -723,12 +723,12 @@ const CertCard = (props) => {
 // UNIVERSITY MODULES SECTION
 //--------------------------------------------
 const Modules = () => {
-  const [modules, setModules] = React.useState([]);
-  const [isAscending, setIsAscending] = React.useState(false);
-  const [isFilterExpanded, setIsFilterExpanded] = React.useState(false);
-  const [allModuleData, setAllModuleData] = React.useState([]);
+  const [modules, setModules] = useState([]);
+  const [isAscending, setIsAscending] = useState(false);
+  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+  const [allModuleData, setAllModuleData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function asyncFetchAndSort(sortFunc) {
       try {
         const data = await fetch(
@@ -850,7 +850,7 @@ const Modules = () => {
 };
 
 const Module = (props) => {
-  const [isShowDesc, setIsShowDesc] = React.useState(false);
+  const [isShowDesc, setIsShowDesc] = useState(false);
   return (
     <div className="card col-10 m-2 m-sm-4 col-md-5 m-md-3 col-lg-4 m-lg-2">
       <div className="card-body">
@@ -931,7 +931,7 @@ export default App;
 //Canvas
 //-----------------------------------
 const Canvas = (props) => {
-  const [colours, setColours] = React.useState([]);
+  const [colours, setColours] = useState([]);
   function loaded() {
     let canvas = document.getElementById("canvas"),
       ctx = canvas.getContext("2d"),
@@ -991,9 +991,10 @@ const Canvas = (props) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     setColours(props.colours);
     colours.length > 0 && loaded();
+    // eslint-disable-next-line
   }, [props.colours, colours]);
   return (
     <div id="easle" className="background">
