@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import RandPoundApp from "./images/RandPoundApp.png";
-import GardenPlanner from "./images/GardenPlanner.png";
-import PotterPlayer from "./images/PotterPlayer.png";
-import NetskipCode from "./images/NetskipCode.png";
-import UltimateGuitarCode from "./images/UltimateGuitarCode.png";
-import MarkDown from "./images/MarkDown.png";
-import RandomQuoteMachine from "./images/RandomQuoteMachine.png";
-import EnergyTracker from "./images/EnergyTracker.png";
-import JavaScriptCalc from "./images/JavaScriptCalc.png";
+
+import Images from "./Images.js";
+
 import {
   faRaspberryPi,
   faGithub,
@@ -393,59 +387,104 @@ const ProjectDeck = () => {
     {
       title: "Potter's Player",
       text: "Full-Stack MERN application to play Potter's Wheel Sermons",
-      img: PotterPlayer,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.PotterPlayer_small
+          : window.innerWidth < 768
+          ? Images.PotterPlayer_large
+          : Images.PotterPlayer_medium,
       href: "https://potter-player.glitch.me",
     },
     {
       title: "Garden Planner",
       text:
         "React App to find out when to sow and harvest fruits and vegetables",
-      img: GardenPlanner,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.GardenPlanner_small
+          : window.innerWidth < 768
+          ? Images.GardenPlanner_large
+          : Images.GardenPlanner_medium,
       href: "https://sky020.github.io/Garden-Planner/",
     },
     {
       title: "Ultimate Guitar Scraper",
       text:
         "Python script that uses Selenium to automatically add UG tabs to my playlist",
-      img: UltimateGuitarCode,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.UltimateGuitarCode_small
+          : window.innerWidth < 768
+          ? Images.UltimateGuitarCode_large
+          : Images.UltimateGuitarCode_medium,
       href: "https://github.com/Sky020/UltimateGuitarScraper",
     },
     {
       title: "NetSkip Browser Extension",
       text: "Browser extension that skips the intros of Netflix series",
-      img: NetskipCode,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.NetskipCode_small
+          : window.innerWidth < 768
+          ? Images.NetskipCode_large
+          : Images.NetskipCode_medium,
       href: "https://github.com/Sky020/NetSkip",
     },
     {
       title: "Rand-Pound Exchange Tracker",
       text:
         "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate",
-      img: RandPoundApp,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.RandPoundApp_small
+          : window.innerWidth < 768
+          ? Images.RandPoundApp_large
+          : Images.RandPoundApp_medium,
       href: "https://github.com/Sky020/Rand-Pound-Exchanger",
     },
     {
       title: "MarkDown Previewer",
       text: "React with Marked text input that translates MarkDown",
-      img: MarkDown,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.MarkDown_small
+          : window.innerWidth < 768
+          ? Images.MarkDown_large
+          : Images.MarkDown_medium,
       href: "https://codepen.io/sky020/full/XWmbpzL",
     },
     {
       title: "Random Quote Generator",
       text:
         "Quote generator that collects data from JSON API using React and jQuery",
-      img: RandomQuoteMachine,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.RandomQuoteMachine_small
+          : window.innerWidth < 768
+          ? Images.RandomQuoteMachine_large
+          : Images.RandomQuoteMachine_medium,
       href: "https://codepen.io/sky020/full/xxGjWGJ",
     },
     {
       title: "Energy Tracker Dashboard",
       text: "Basic multi-page HTML, CSS, and JavaScript webpage",
-      img: EnergyTracker,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.EnergyTracker_small
+          : window.innerWidth < 768
+          ? Images.EnergyTracker_large
+          : Images.EnergyTracker_medium,
       href: "https://sky020.github.io/Energy-App/",
     },
     {
       title: "JavaScript Calculator",
       text: "Calculator made using React",
-      img: JavaScriptCalc,
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.JavaScriptCalc_small
+          : window.innerWidth < 768
+          ? Images.JavaScriptCalc_large
+          : Images.JavaScriptCalc_medium,
       href: "https://codepen.io/sky020/full/rNOpOoY",
     },
   ];
@@ -488,7 +527,7 @@ const ProjectCard = (props) => {
       onMouseLeave={handleUnhover}
     >
       <div className="card-holder">
-        <img className="card-img-top" src={props.img} alt="Card Cap"></img>
+        <img className="card-img-top" src={props.img()} alt="Card Cap"></img>
       </div>
       <div className="card-body">
         <h1 className="card-title">{props.title}</h1>
