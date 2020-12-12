@@ -3,7 +3,7 @@
   "author": "Shaun Hamilton",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sky020.github.io/portfolio",
+  "homepage": "http://shaunshamilton.github.io/portfolio",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",

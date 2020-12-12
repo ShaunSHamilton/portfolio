@@ -405,7 +405,7 @@ const ProjectDeck = () => {
           : window.innerWidth < 768
           ? Images.GardenPlanner_large
           : Images.GardenPlanner_medium,
-      href: "https://sky020.github.io/Garden-Planner/",
+      href: "https://shaunshamilton.github.io/Garden-Planner/",
     },
     {
       title: "Ultimate Guitar Scraper",
@@ -417,7 +417,7 @@ const ProjectDeck = () => {
           : window.innerWidth < 768
           ? Images.UltimateGuitarCode_large
           : Images.UltimateGuitarCode_medium,
-      href: "https://github.com/Sky020/UltimateGuitarScraper",
+      href: "https://github.com/ShaunSHamilton/UltimateGuitarScraper",
     },
     {
       title: "NetSkip Browser Extension",
@@ -428,7 +428,7 @@ const ProjectDeck = () => {
           : window.innerWidth < 768
           ? Images.NetskipCode_large
           : Images.NetskipCode_medium,
-      href: "https://github.com/Sky020/NetSkip",
+      href: "https://github.com/ShaunSHamilton/NetSkip",
     },
     {
       title: "Rand-Pound Exchange Tracker",
@@ -440,7 +440,7 @@ const ProjectDeck = () => {
           : window.innerWidth < 768
           ? Images.RandPoundApp_large
           : Images.RandPoundApp_medium,
-      href: "https://github.com/Sky020/Rand-Pound-Exchanger",
+      href: "https://github.com/ShaunSHamilton/Rand-Pound-Exchanger",
     },
     {
       title: "MarkDown Previewer",
@@ -474,7 +474,7 @@ const ProjectDeck = () => {
           : window.innerWidth < 768
           ? Images.EnergyTracker_large
           : Images.EnergyTracker_medium,
-      href: "https://sky020.github.io/Energy-App/",
+      href: "https://shaunshamilton.github.io/Energy-App/",
     },
     {
       title: "JavaScript Calculator",
@@ -771,7 +771,7 @@ const Modules = () => {
     async function asyncFetchAndSort(sortFunc) {
       try {
         const data = await fetch(
-          "https://raw.githubusercontent.com/Sky020/portfolio/master/public/modules.json"
+          "https://raw.githubusercontent.com/ShaunSHamilton/portfolio/master/public/modules.json"
         );
         const moduleJson = await data.json();
         const sortedData = moduleJson.sort(sortFunc);
@@ -922,7 +922,10 @@ const Contact = () => {
       <header className="header">
         <div className="con-2 flex-wrap">
           <div className="flex-sm-row">
-            <a href="https://www.github.com/sky020" className="icon-btn">
+            <a
+              href="https://www.github.com/ShaunSHamilton"
+              className="icon-btn"
+            >
               <div className="holder">
                 <FontAwesomeIcon icon={faGithub} className="icon GH" /> GitHub
               </div>
