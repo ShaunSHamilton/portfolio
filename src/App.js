@@ -9,7 +9,6 @@ import {
   faNode,
   faNodeJs,
   faNpm,
-  faFacebook,
   faFreeCodeCamp,
   faUbuntu,
   faLinkedin,
@@ -919,6 +918,7 @@ const Module = (props) => {
 const Contact = () => {
   return (
     <div className="container-fluid con-1" id="contact">
+      <h2 className="heading-2">Contact</h2>
       <header className="header">
         <div className="con-2 flex-wrap">
           <div className="flex-sm-row">
@@ -947,17 +947,6 @@ const Contact = () => {
               <div className="holder">
                 <FontAwesomeIcon icon={faLinkedin} className="icon Li" />{" "}
                 LinkedIn
-              </div>
-            </a>
-          </div>
-          <div className="flex-sm-row">
-            <a
-              href="https://www.facebook.com/shaun.s.hamilton"
-              className="icon-btn"
-            >
-              <div className="holder">
-                <FontAwesomeIcon icon={faFacebook} className="icon FB" />{" "}
-                Facebook
               </div>
             </a>
           </div>
