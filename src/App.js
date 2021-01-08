@@ -640,6 +640,13 @@ const Certifications = () => {
         "https://www.secondstate.io/certs/intro-202008/?contract=0xea0b5cf6d6fcd75a66f7c0d56162325ce776345f",
       dateAquired: "08/2020",
     },
+    {
+      title: "Quality Assurance",
+      description: "",
+      link:
+        "https://www.freecodecamp.org/certification/sky020/quality-assurance-v7",
+      dateAquired: "01/2021",
+    },
   ].sort((a, b) => {
     if (Number(a.dateAquired.slice(3)) > Number(b.dateAquired.slice(3))) {
       return -1;
@@ -892,7 +899,15 @@ const Module = (props) => {
   return (
     <div className="card col-10 m-2 m-sm-4 col-md-5 m-md-3 col-lg-4 m-lg-2">
       <div className="card-body">
-        <h4 className="card-title">{props.module.name}</h4>
+        <h4 className="card-title">
+          {props.module.link ? (
+            <a href={props.module.link} target="_blank" rel="noopener">
+              {props.module.name}
+            </a>
+          ) : (
+            props.module.name
+          )}
+        </h4>
         <p
           className={
             "card-text mod-description" + (isShowDesc ? "" : " d-none")
