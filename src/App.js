@@ -809,8 +809,9 @@ const Modules = () => {
     setIsFilterExpanded(!isFilterExpanded);
     if (year === 1) {
       setModules(allModuleData);
+    } else {
+      setModules(allModuleData.filter((mod) => mod.year === year));
     }
-    setModules(allModuleData.filter((mod) => mod.year === year));
   };
   return (
     <div id="modules" className="row">
