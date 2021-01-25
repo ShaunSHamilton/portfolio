@@ -384,6 +384,17 @@ async function getContributions() {
 const ProjectDeck = () => {
   const projects = [
     {
+      title: "Energy Tracker Dashboard",
+      text: "Fullstack MERNG with Redux app to view energy consumption",
+      img: () =>
+        window.innerWidth < 380 || window.innerWidth > 992
+          ? Images.EnergyTracker_small
+          : window.innerWidth < 768
+          ? Images.EnergyTracker_large
+          : Images.EnergyTracker_medium,
+      href: "https://shaunshamilton.github.io/Energy-App/",
+    },
+    {
       title: "Potter's Player",
       text: "Full-Stack MERN application to play Potter's Wheel Sermons",
       img: () =>
@@ -463,17 +474,6 @@ const ProjectDeck = () => {
           ? Images.RandomQuoteMachine_large
           : Images.RandomQuoteMachine_medium,
       href: "https://codepen.io/sky020/full/xxGjWGJ",
-    },
-    {
-      title: "Energy Tracker Dashboard",
-      text: "Basic multi-page HTML, CSS, and JavaScript webpage",
-      img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.EnergyTracker_small
-          : window.innerWidth < 768
-          ? Images.EnergyTracker_large
-          : Images.EnergyTracker_medium,
-      href: "https://shaunshamilton.github.io/Energy-App/",
     },
     {
       title: "JavaScript Calculator",

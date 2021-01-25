@@ -15,7 +15,7 @@ import NetskipCode_small from "./images/NetskipCode.png-small.jpg";
 import UltimateGuitarCode_small from "./images/UltimateGuitarCode.png-small.jpg";
 import MarkDown_small from "./images/MarkDown.png-small.jpg";
 import RandomQuoteMachine_small from "./images/RandomQuoteMachine.png-small.jpg";
-import EnergyTracker_small from "./images/EnergyTracker.png-small.jpg";
+import EnergyTracker_small from "./images/EnergyTracker-small.jpg";
 import JavaScriptCalc_small from "./images/JavaScriptCalc.png-small.jpg";
 
 import RandPoundApp_medium from "./images/RandPoundApp.png-medium.jpg";
@@ -25,7 +25,7 @@ import NetskipCode_medium from "./images/NetskipCode.png-medium.jpg";
 import UltimateGuitarCode_medium from "./images/UltimateGuitarCode.png-medium.jpg";
 import MarkDown_medium from "./images/MarkDown.png-medium.jpg";
 import RandomQuoteMachine_medium from "./images/RandomQuoteMachine.png-medium.jpg";
-import EnergyTracker_medium from "./images/EnergyTracker.png-medium.jpg";
+import EnergyTracker_medium from "./images/EnergyTracker-medium.jpg";
 import JavaScriptCalc_medium from "./images/JavaScriptCalc.png-medium.jpg";
 
 import RandPoundApp_large from "./images/RandPoundApp.png-large.jpg";
@@ -35,7 +35,7 @@ import NetskipCode_large from "./images/NetskipCode.png-large.jpg";
 import UltimateGuitarCode_large from "./images/UltimateGuitarCode.png-large.jpg";
 import MarkDown_large from "./images/MarkDown.png-large.jpg";
 import RandomQuoteMachine_large from "./images/RandomQuoteMachine.png-large.jpg";
-import EnergyTracker_large from "./images/EnergyTracker.png-large.jpg";
+import EnergyTracker_large from "./images/EnergyTracker-large.jpg";
 import JavaScriptCalc_large from "./images/JavaScriptCalc.png-large.jpg";
 
 export default {
