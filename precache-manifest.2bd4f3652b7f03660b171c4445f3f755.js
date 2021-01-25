@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c52a0cb13075b81abd3e3e0059775fb7",
+    "revision": "714a323a8bc1f051981be016aeb778b1",
     "url": "/portfolio/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/static/css/2.b5b4534f.chunk.css"
   },
   {
-    "revision": "2027a34e86f9fbd6cb63",
+    "revision": "a72e8a5df1d0785aacb6",
     "url": "/portfolio/static/css/main.e03ff5dd.chunk.css"
   },
   {
@@ -20,20 +20,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/static/js/2.3ed2f3d9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2027a34e86f9fbd6cb63",
-    "url": "/portfolio/static/js/main.5eae92e3.chunk.js"
+    "revision": "a72e8a5df1d0785aacb6",
+    "url": "/portfolio/static/js/main.ed819696.chunk.js"
   },
   {
     "revision": "6c1d3ad26a766dc494c1",
     "url": "/portfolio/static/js/runtime-main.d597d31e.js"
   },
   {
-    "revision": "f42b6d1de495a0571d09a5cd542bc0fd",
-    "url": "/portfolio/static/media/EnergyTracker.f42b6d1d.png"
+    "revision": "2019533632184478f127ff19b41685f0",
+    "url": "/portfolio/static/media/EnergyTracker-large.20195336.jpg"
   },
   {
-    "revision": "e324d69374b69694dbeaeccaec2ad6e2",
-    "url": "/portfolio/static/media/EnergyTracker.png-large.e324d693.jpg"
+    "revision": "bf38d280a6f21fd3cc1c8df666e9ac54",
+    "url": "/portfolio/static/media/EnergyTracker-medium.bf38d280.jpg"
+  },
+  {
+    "revision": "a90b7eacedd8228cf3223e79193862ad",
+    "url": "/portfolio/static/media/EnergyTracker.a90b7eac.png"
   },
   {
     "revision": "85e64cc46633292ab05041d0d01e716a",
