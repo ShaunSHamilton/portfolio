@@ -285,7 +285,7 @@ const About = (props) => {
           </div>
         </div>
         <p id="para">
-          Mechanical Engineering Student, Student Ambassador, and freeCodeCamp
+          Mechanical Engineering Student, and freeCodeCamp
           Moderator
         </p>
       </header>
