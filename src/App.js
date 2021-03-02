@@ -285,8 +285,7 @@ const About = (props) => {
           </div>
         </div>
         <p id="para">
-          Mechanical Engineering Student, and freeCodeCamp
-          Moderator
+          Mechanical Engineering Student, and freeCodeCamp Moderator
         </p>
       </header>
     </div>
@@ -334,22 +333,25 @@ const OpenSource = () => {
         console.log(data);
 
         setIsLoading(false);
-        const commits = data.commits;
-        setContributionData({
-          numCommits: commits,
-          additions: data.additions,
-          deletions: data.deletions,
-          openPRs: data.openPRs,
-        });
-        setProgress((commits / commitGoal) * 100);
+        if (data.error) {
+          setContributionData({ error: "GitHub API failed to fetch" });
+        } else {
+          const commits = data.commits;
+          setContributionData({
+            numCommits: commits,
+            additions: data.additions,
+            deletions: data.deletions,
+            openPRs: data.openPRs,
+          });
+          setProgress((commits / commitGoal) * 100);
+        }
       } catch (err) {
         setContributionData({ error: "API query limit reached" });
       }
     })();
   }, []);
-  return (
-    !contributionData.error &&
-    (isLoading ? (
+  return !contributionData.error ? (
+    isLoading ? (
       <div className="spinner-border text-danger small" role="status">
         <span className="sr-only">Loading...</span>
       </div>
@@ -367,7 +369,9 @@ const OpenSource = () => {
           <span id="third-span" className="checkmark"></span>
         </div>
       </div>
-    ))
+    )
+  ) : (
+    <div id="open-source">{contributionData.error}</div>
   );
 };
 
