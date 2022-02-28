@@ -38,7 +38,7 @@ import RandomQuoteMachine_large from "./images/RandomQuoteMachine.png-large.jpg"
 import EnergyTracker_large from "./images/EnergyTracker-large.jpg";
 import JavaScriptCalc_large from "./images/JavaScriptCalc.png-large.jpg";
 
-export default {
+const images = {
   RandPoundApp,
   GardenPlanner,
   PotterPlayer,
@@ -76,3 +76,5 @@ export default {
   EnergyTracker_large,
   JavaScriptCalc_large,
 };
+
+export default images;

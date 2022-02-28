@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import Images from "./Images.js";
@@ -114,11 +114,7 @@ const Nav = (props) => {
             href="#modules"
             onClick={toggleNav}
           >
-            University Modules (Under Construction <b></b>
-            <div className="spinner-border text-danger small" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-            )
+            University Modules
           </a>
           <a
             className="nav-link h3"
@@ -194,7 +190,7 @@ const About = (props) => {
       <header className="App-header">
         <Canvas colours={props.colours} />
         <div id="name">Shaun Hamilton</div>
-        <OpenSource />
+        {/* <OpenSource /> */}
         <div
           className={
             "container-fluid row justify-content-center" +
@@ -292,95 +288,6 @@ const About = (props) => {
   );
 };
 
-const OpenSource = () => {
-  const [contributionData, setContributionData] = useState({
-    numCommits: 0,
-    error: null,
-  });
-  const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const commitGoal = 100;
-
-  function getProgress(prog) {
-    const bar = document.getElementById("progress-bar");
-    bar.style.width = `${prog}%`;
-
-    if (prog > 2) {
-      const spanOne = document.getElementById("first-span");
-      spanOne.style.setProperty("--disp", "block");
-      spanOne.style.backgroundColor = "green";
-    }
-    if (prog > 50) {
-      const spanTwo = document.getElementById("second-span");
-      spanTwo.style.setProperty("--disp", "block");
-      spanTwo.style.backgroundColor = "green";
-    }
-    if (prog > 96) {
-      const spanThree = document.getElementById("third-span");
-      spanThree.style.setProperty("--disp", "block");
-      spanThree.style.backgroundColor = "green";
-    }
-  }
-  useEffect(() => {
-    if (!isLoading) {
-      getProgress(progress);
-    }
-  }, [progress, isLoading]);
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getContributions();
-        console.log(data);
-
-        setIsLoading(false);
-        if (data.error) {
-          setContributionData({ error: "GitHub API failed to fetch" });
-        } else {
-          const commits = data.commits;
-          setContributionData({
-            numCommits: commits,
-            additions: data.additions,
-            deletions: data.deletions,
-            openPRs: data.openPRs,
-          });
-          setProgress((commits / commitGoal) * 100);
-        }
-      } catch (err) {
-        setContributionData({ error: "API query limit reached" });
-      }
-    })();
-  }, []);
-  return !contributionData.error ? (
-    isLoading ? (
-      <div className="spinner-border text-danger small" role="status">
-        <span className="sr-only">Loading...</span>
-      </div>
-    ) : (
-      <div id="open-source">
-        <h3>Open Source Commit Goal:</h3>
-        <div id="line-contributions">
-          <h4>Additions: {contributionData.additions}</h4>
-          <h4>Deletions: {contributionData.deletions}</h4>
-        </div>
-        <div className="progbar">
-          <div id="progress-bar">{contributionData.numCommits}</div>
-          <span id="first-span" className="checkmark"></span>
-          <span id="second-span" className="checkmark"></span>
-          <span id="third-span" className="checkmark"></span>
-        </div>
-      </div>
-    )
-  ) : (
-    <div id="open-source">{contributionData.error}</div>
-  );
-};
-
-async function getContributions() {
-  const response = await fetch("https://contribution-api.herokuapp.com/");
-  const data = await response.json();
-  return data;
-}
-
 //-----------------------------------------
 // PROJECT SECTION
 //-----------------------------------------
@@ -388,43 +295,36 @@ async function getContributions() {
 const ProjectDeck = () => {
   const projects = [
     {
-      title: "Energy Tracker Dashboard",
-      text: "Fullstack MERNG with Redux app to view energy consumption",
+      title: "Project Euler in Rust",
+      text: "In-Editor app creating using ShaunOS to interactively solve the freeCodeCamp Project Euler challenges in Rust",
       img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.EnergyTracker_small
-          : window.innerWidth < 768
-          ? Images.EnergyTracker_large
-          : Images.EnergyTracker_medium,
-      href: "https://shaunshamilton.github.io/Energy-App/",
+        "https://github.com/freeCodeCamp/euler-rust/raw/main/.vscode/euler-rust-gitpod.png",
+      href: "https://github.com/freeCodeCamp/euler-rust",
     },
     {
-      title: "Potter's Player",
-      text: "Full-Stack MERN application to play Potter's Wheel Sermons",
+      title: "Rust in Replit",
+      text: "Interactive beginner's Rust course taught using the Replit IDE",
       img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.PotterPlayer_small
-          : window.innerWidth < 768
-          ? Images.PotterPlayer_large
-          : Images.PotterPlayer_medium,
-      href: "https://potter-player.glitch.me",
+        "https://www.freecodecamp.org/news/content/images/size/w2000/2021/11/rust-and-sunset.png",
+      href: "https://github.com/freeCodeCamp/rust-in-replit",
     },
     {
-      title: "Garden Planner",
-      text:
-        "React App to find out when to sow and harvest fruits and vegetables",
+      title: "freeCodeCamp - Courses",
+      text: "A VSCode extension to create and run courses offered by freeCodeCamp",
       img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.GardenPlanner_small
-          : window.innerWidth < 768
-          ? Images.GardenPlanner_large
-          : Images.GardenPlanner_medium,
-      href: "https://shaunshamilton.github.io/Garden-Planner/",
+        "https://github.com/freeCodeCamp/freecodecamp-courses/raw/main/images/open-course.png",
+      href: "https://github.com/freeCodeCamp/freecodecamp-courses",
+    },
+    {
+      title: "ShaunOS",
+      text: "A template for freeCodeCamp's external courses",
+      img: () =>
+        "https://github.com/freeCodeCamp/euler-rust/raw/main/.vscode/euler-rust-gitpod.png",
+      href: "https://github.com/freeCodeCamp/external-project",
     },
     {
       title: "Ultimate Guitar Scraper",
-      text:
-        "Python script that uses Selenium to automatically add UG tabs to my playlist",
+      text: "Python script that uses Selenium to automatically add UG tabs to my playlist",
       img: () =>
         window.innerWidth < 380 || window.innerWidth > 992
           ? Images.UltimateGuitarCode_small
@@ -443,52 +343,6 @@ const ProjectDeck = () => {
           ? Images.NetskipCode_large
           : Images.NetskipCode_medium,
       href: "https://github.com/ShaunSHamilton/NetSkip",
-    },
-    {
-      title: "Rand-Pound Exchange Tracker",
-      text:
-        "Python web scraper with BeautifulSoup, and App that tracks the ZAR to GBP exchange rate",
-      img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.RandPoundApp_small
-          : window.innerWidth < 768
-          ? Images.RandPoundApp_large
-          : Images.RandPoundApp_medium,
-      href: "https://github.com/ShaunSHamilton/Rand-Pound-Exchanger",
-    },
-    {
-      title: "MarkDown Previewer",
-      text: "React with Marked text input that translates MarkDown",
-      img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.MarkDown_small
-          : window.innerWidth < 768
-          ? Images.MarkDown_large
-          : Images.MarkDown_medium,
-      href: "https://codepen.io/sky020/full/XWmbpzL",
-    },
-    {
-      title: "Random Quote Generator",
-      text:
-        "Quote generator that collects data from JSON API using React and jQuery",
-      img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.RandomQuoteMachine_small
-          : window.innerWidth < 768
-          ? Images.RandomQuoteMachine_large
-          : Images.RandomQuoteMachine_medium,
-      href: "https://codepen.io/sky020/full/xxGjWGJ",
-    },
-    {
-      title: "JavaScript Calculator",
-      text: "Calculator made using React",
-      img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.JavaScriptCalc_small
-          : window.innerWidth < 768
-          ? Images.JavaScriptCalc_large
-          : Images.JavaScriptCalc_medium,
-      href: "https://codepen.io/sky020/full/rNOpOoY",
     },
   ];
   return (
@@ -551,43 +405,37 @@ const Certifications = () => {
     {
       title: "Introduction to Symbolic Math with MATLAB",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=d4d5c4af-9f94-420b-b5f8-be2ce01c2bd7",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=d4d5c4af-9f94-420b-b5f8-be2ce01c2bd7",
       dateAquired: "08/2020",
     },
     {
       title: "Statistical Methods with MATLAB",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=0959300c-223d-47b3-8e85-5ba145f9e289",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=0959300c-223d-47b3-8e85-5ba145f9e289",
       dateAquired: "08/2020",
     },
     {
       title: "Solving Ordinary Differential Equations with MATLAB",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=5b6e5907-d335-4866-b668-3f0c2b610b15",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=5b6e5907-d335-4866-b668-3f0c2b610b15",
       dateAquired: "07/2020",
     },
     {
       title: "Machine Learning Onramp",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=277f921a-b717-40f1-9bce-5b80b3cbd67e",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=277f921a-b717-40f1-9bce-5b80b3cbd67e",
       dateAquired: "02/2020",
     },
     {
       title: "MATLAB Fundamentals",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=0a6892ed-9ceb-46fc-98e3-d62d073e92ed",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=0a6892ed-9ceb-46fc-98e3-d62d073e92ed",
       dateAquired: "11/2019",
     },
     {
       title: "Simulink Onramp",
       description: "",
-      link:
-        "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=063c785c-e8bf-40d3-afe3-5add336e81d9",
+      link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=063c785c-e8bf-40d3-afe3-5add336e81d9",
       dateAquired: "11/2019",
     },
     {
@@ -605,50 +453,43 @@ const Certifications = () => {
     {
       title: "Google Analytics",
       description: "",
-      link:
-        "https://analytics.google.com/analytics/academy/certificate/kcl0ND6-QYSvm8ytIBkVog",
+      link: "https://analytics.google.com/analytics/academy/certificate/kcl0ND6-QYSvm8ytIBkVog",
       dateAquired: "05/2020",
     },
     {
       title: "Responsive Web Design",
       description: "",
-      link:
-        "https://www.freecodecamp.org/certification/sky020/responsive-web-design",
+      link: "https://www.freecodecamp.org/certification/sky020/responsive-web-design",
       dateAquired: "08/2019",
     },
     {
       title: "JavaScript Algorithms and Data Structures",
       description: "",
-      link:
-        "https://www.freecodecamp.org/certification/sky020/javascript-algorithms-and-data-structures",
+      link: "https://www.freecodecamp.org/certification/sky020/javascript-algorithms-and-data-structures",
       dateAquired: "10/2019",
     },
     {
       title: "Front End Libraries",
       description: "",
-      link:
-        "https://www.freecodecamp.org/certification/sky020/front-end-libraries",
+      link: "https://www.freecodecamp.org/certification/sky020/front-end-libraries",
       dateAquired: "07/2020",
     },
     {
       title: "APIs and Microservices",
       description: "",
-      link:
-        "https://www.freecodecamp.org/certification/sky020/apis-and-microservices",
+      link: "https://www.freecodecamp.org/certification/sky020/apis-and-microservices",
       dateAquired: "07/2020",
     },
     {
       title: "Blockchain with Rust",
       description: "",
-      link:
-        "https://www.secondstate.io/certs/intro-202008/?contract=0xea0b5cf6d6fcd75a66f7c0d56162325ce776345f",
+      link: "https://www.secondstate.io/certs/intro-202008/?contract=0xea0b5cf6d6fcd75a66f7c0d56162325ce776345f",
       dateAquired: "08/2020",
     },
     {
       title: "Quality Assurance",
       description: "",
-      link:
-        "https://www.freecodecamp.org/certification/sky020/quality-assurance-v7",
+      link: "https://www.freecodecamp.org/certification/sky020/quality-assurance-v7",
       dateAquired: "01/2021",
     },
   ].sort((a, b) => {
@@ -781,7 +622,7 @@ const Modules = () => {
     async function asyncFetchAndSort(sortFunc) {
       try {
         const data = await fetch(
-          "https://raw.githubusercontent.com/ShaunSHamilton/portfolio/master/public/modules.json"
+          "https://raw.githubusercontent.com/ShaunSHamilton/portfolio/main/public/modules.json"
         );
         const moduleJson = await data.json();
         const sortedData = moduleJson.sort(sortFunc);
@@ -906,7 +747,11 @@ const Module = (props) => {
       <div className="card-body">
         <h4 className="card-title">
           {props.module.link ? (
-            <a href={props.module.link} target="_blank" rel="noopener">
+            <a
+              href={props.module.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {props.module.name}
             </a>
           ) : (
@@ -967,6 +812,17 @@ const Contact = () => {
               <div className="holder">
                 <FontAwesomeIcon icon={faLinkedin} className="icon Li" />{" "}
                 LinkedIn
+              </div>
+            </a>
+          </div>
+          <div className="flex-sm-row">
+            <a
+              href="https://www.freecodecamp.org/news/author/shaun/"
+              className="icon-btn"
+            >
+              <div className="holder">
+                <FontAwesomeIcon icon={faFreeCodeCamp} className="icon fCC" />{" "}
+                freeCodeCamp News
               </div>
             </a>
           </div>
