@@ -1,4 +1,3 @@
-import Images from "../Images";
 import { ProjectCard } from "./project-card";
 
 export const ProjectDeck = () => {
@@ -32,26 +31,18 @@ export const ProjectDeck = () => {
       href: "https://github.com/freeCodeCamp/external-project",
     },
     {
-      title: "Ultimate Guitar Scraper",
-      text: "Python script that uses Selenium to automatically add UG tabs to my playlist",
+      title: "Logover",
+      text: "An NPM package for configurable logging in JavaScript and Node.js",
       img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.UltimateGuitarCode_small
-          : window.innerWidth < 768
-          ? Images.UltimateGuitarCode_large
-          : Images.UltimateGuitarCode_medium,
-      href: "https://github.com/ShaunSHamilton/UltimateGuitarScraper",
+        "https://github.com/ShaunSHamilton/logover/blob/main/test/show.png",
+      href: "https://github.com/ShaunSHamilton/logover",
     },
     {
-      title: "NetSkip Browser Extension",
-      text: "Browser extension that skips the intros of Netflix series",
+      title: "Key Code",
+      text: "A VSCode extension to help you learn and practice keyboard shortcuts",
       img: () =>
-        window.innerWidth < 380 || window.innerWidth > 992
-          ? Images.NetskipCode_small
-          : window.innerWidth < 768
-          ? Images.NetskipCode_large
-          : Images.NetskipCode_medium,
-      href: "https://github.com/ShaunSHamilton/NetSkip",
+        "https://github.com/ShaunSHamilton/key-code/blob/main/images/key-code-1.png",
+      href: "https://github.com/ShaunSHamilton/key-code",
     },
   ];
   return (
