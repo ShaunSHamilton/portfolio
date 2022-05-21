@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "parcel public/index.html",
-    "build": "parcel build public/index.html",
+    "build": "parcel build public/index.html --public-url /portfolio",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
