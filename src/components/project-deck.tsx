@@ -55,7 +55,7 @@ export const ProjectDeck = () => {
     },
   ];
   return (
-    <div className="projects">
+    <div id="projects">
       {projects.map((project, i) => (
         <ProjectCard
           title={project.title}

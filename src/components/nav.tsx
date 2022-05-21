@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Nav = (props) => {
+export const Nav = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   const toggleNav = () => setIsToggled(!isToggled);
@@ -9,23 +9,23 @@ export const Nav = (props) => {
       <div className={`nav-cont ${isToggled ? "show" : "hide"}`}>
         <ul className="nav-list">
           <li>
-            <a>About</a>
+            <a href="#about">About</a>
           </li>
           <li>
-            <a>Projects</a>
+            <a href="#projects">Projects</a>
           </li>
           {/* <li>
             <a>Certifications</a>
           </li> */}
           <li>
-            <a>Modules</a>
+            <a href="#modules">Modules</a>
           </li>
           <li>
-            <a>Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </div>
-      <button className="nav-toggle" onClick={toggleNav}>
+      <button className="nav-toggle" onClick={toggleNav} tabIndex={1}>
         <span>{isToggled ? "--" : "="}</span>
         <span>{isToggled ? "--" : "="}</span>
       </button>

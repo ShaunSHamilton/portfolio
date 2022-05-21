@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Module } from "./module";
 
 export const Modules = () => {
@@ -6,6 +6,7 @@ export const Modules = () => {
   const [isAscending, setIsAscending] = useState(false);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [allModuleData, setAllModuleData] = useState([]);
+  const selectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     async function asyncFetchAndSort(sortFunc) {
@@ -39,7 +40,7 @@ export const Modules = () => {
     setIsAscending(!isAscending);
   };
 
-  const handleFilter = (year) => {
+  const handleFilter = (year: number) => {
     setIsFilterExpanded(!isFilterExpanded);
     if (year === 1) {
       setModules(allModuleData);
@@ -48,79 +49,68 @@ export const Modules = () => {
     }
   };
   return (
-    <div id="modules" className="row">
-      <h2 className="heading-2">Modules</h2>
-      <div
+    <div id="modules">
+      <h2>Modules</h2>
+      <fieldset
         id="btn-filter"
-        className="btn-group btn-group-sm"
+        className="btn-group"
         role="group"
         aria-label="Module Filter"
       >
         <button
           type="button"
-          className="btn btn-secondary p-2 m-1"
+          className="btn btn-secondary"
           onClick={handleAscending}
         >
           {isAscending ? "Ascending" : "Descending"} Year
         </button>
-        <div
-          className={"btn-group" + (isFilterExpanded ? " show" : "")}
-          role="group"
-        >
+        <fieldset className="btn-group" role="group">
           <button
             id="yearFilter"
             type="button"
-            className="btn btn-secondary dropdown-toggle"
+            className={
+              "btn btn-secondary dropdown-toggle" +
+              (isFilterExpanded ? " hide" : " show")
+            }
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded={isFilterExpanded}
-            onClick={() => setIsFilterExpanded(!isFilterExpanded)}
+            onClick={() => {
+              setIsFilterExpanded(!isFilterExpanded);
+              const sel = selectRef.current;
+              sel.size = 5;
+            }}
           >
             Filter
           </button>
-          <div
-            className={"dropdown-menu" + (isFilterExpanded ? " show" : "")}
+          <select
+            className={"dropdown-menu" + (isFilterExpanded ? " show" : " hide")}
             aria-labelledby="yearFilter"
+            aria-expanded={isFilterExpanded}
+            onChange={(e) => {
+              handleFilter(Number(e.target.value));
+            }}
+            ref={selectRef}
           >
-            <a
-              className="dropdown-item"
-              href="#!"
-              onClick={() => handleFilter(1)}
-            >
+            <option className="dropdown-item" value={1}>
               All
-            </a>
-            <a
-              className="dropdown-item"
-              href="#!"
-              onClick={() => handleFilter(2)}
-            >
+            </option>
+            <option className="dropdown-item" value={2}>
               Year 2
-            </a>
-            <a
-              className="dropdown-item"
-              href="#!"
-              onClick={() => handleFilter(3)}
-            >
+            </option>
+            <option className="dropdown-item" value={3}>
               Year 3
-            </a>
-            <a
-              className="dropdown-item"
-              href="#!"
-              onClick={() => handleFilter(4)}
-            >
+            </option>
+            <option className="dropdown-item" value={4}>
               Year 4
-            </a>
-            <a
-              className="dropdown-item"
-              href="#!"
-              onClick={() => handleFilter(5)}
-            >
+            </option>
+            <option className="dropdown-item" value={5}>
               Year 5
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="row card-deck justify-content-center w-100">
+            </option>
+          </select>
+        </fieldset>
+      </fieldset>
+      <div className="card-deck">
         {modules.map((module, i) => (
           <Module module={module} key={i} />
         ))}

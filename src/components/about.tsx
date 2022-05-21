@@ -20,13 +20,13 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faMATLAB } from "../faMATLAB";
 // import { faTypescript } from "../faTypescript";
-import { Canvas } from "./canvas";
+// import { Canvas } from "./canvas";
 
-export const About = (props) => {
+export const About = () => {
   return (
     <div id="about">
       <header className="about-header">
-        <Canvas colours={props.colours} />
+        {/* <Canvas colours={props.colours} /> */}
         <h2 className="name">Shaun Hamilton</h2>
 
         <p className="para">
