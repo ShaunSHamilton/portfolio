@@ -25479,7 +25479,6 @@ var _walletAdapterReact = require("@solana/wallet-adapter-react");
 var _walletAdapterWallets = require("@solana/wallet-adapter-wallets");
 var _web3Js = require("@solana/web3.js");
 var _solana = require("./solana");
-var _stylesCss = require("@solana/wallet-adapter-react-ui/styles.css");
 var _s = $RefreshSig$();
 const NET = "devnet";
 const Web3 = ()=>{
@@ -25514,22 +25513,22 @@ const Web3 = ()=>{
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_walletAdapterReactUi.WalletModalProvider, {
                 children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_solana.Solana, {}, void 0, false, {
                     fileName: "client/src/components/web3/index.tsx",
-                    lineNumber: 50,
+                    lineNumber: 48,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "client/src/components/web3/index.tsx",
-                lineNumber: 49,
+                lineNumber: 47,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "client/src/components/web3/index.tsx",
-            lineNumber: 48,
+            lineNumber: 46,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "client/src/components/web3/index.tsx",
-        lineNumber: 47,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined);
 };
@@ -25543,7 +25542,7 @@ $RefreshReg$(_c, "Web3");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@solana/wallet-adapter-base":"8nZDB","@solana/wallet-adapter-react-ui":"4cbqf","@solana/wallet-adapter-react":"vinjz","@solana/wallet-adapter-wallets":"13nZO","@solana/web3.js":"5JBKN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./solana":"jImn1","@solana/wallet-adapter-react-ui/styles.css":"6eTRi"}],"8nZDB":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@solana/wallet-adapter-base":"8nZDB","@solana/wallet-adapter-react-ui":"4cbqf","@solana/wallet-adapter-react":"vinjz","@solana/wallet-adapter-wallets":"13nZO","@solana/web3.js":"5JBKN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./solana":"jImn1"}],"8nZDB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _adapterMjs = require("./adapter.mjs");
@@ -57008,8 +57007,8 @@ Signature.prototype.toHex = function toHex() {
 module.exports = Signature;
 
 },{"bn.js":"d0RHy","../utils":"8sNT5"}],"7x0z6":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
@@ -73685,7 +73684,7 @@ function formatDate(date, ts) {
     return ts.replace(/(?<!\\)Y(?<!\\)Y(?<!\\)Y(?<!\\)Y/g, YYYY).replace(/(?<!\\)Y(?<!\\)Y/g, YY).replace(/(?<!\\)M(?<!\\)M(?<!\\)M/g, Mmm).replace(/(?<!\\)M(?<!\\)M/g, MM).replace(/(?<!\\)M/g, M).replace(/(?<!\\)W(?<!\\)w(?<!\\)w/g, Www).replace(/(?<!\\)W/g, W).replace(/(?<!\\)d(?<!\\)d/g, dd).replace(/(?<!\\)h(?<!\\)h/g, hh).replace(/(?<!\\)m(?<!\\)m/g, mm).replace(/(?<!\\)s(?<!\\)s/g, ss).replace(/(?<!\\)S(?<!\\)S(?<!\\)S/g, SSS).replace(/(?<!\\)Z/g, Z);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6eTRi":[function() {},{}],"azRtj":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"azRtj":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2230 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
