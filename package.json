@@ -5,7 +5,7 @@
   "private": true,
   "homepage": "http://shaunshamilton.github.io/portfolio/",
   "scripts": {
-    "start:client": "npm run -w=client start",
+    "dev:client": "API_LOCATION=http://localhost:3000 npm run -w=client start",
     "dev:server": "npm run -w=server dev",
     "start:server": "npm run -w=server start",
     "build:client": "npm run -w=client build",

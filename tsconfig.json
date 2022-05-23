@@ -17,8 +17,7 @@
       // different options with a single tsconfig.json.
       // "esm": true
       "allowSyntheticDefaultImports": true,
-      "outDir": "./server/build",
-      "generateDeclarationFiles": false
+      "outDir": "./server/build"
     }
   },
   "compilerOptions": {

@@ -10,7 +10,7 @@ const STATUS = {
   Paid: "Paid",
 };
 
-const { NODE_ENV } = process.env;
+const { API_LOCATION } = process.env;
 
 export const Coffee = () => {
   const { connection } = useConnection();
@@ -34,16 +34,13 @@ export const Coffee = () => {
   // Fetch the transaction object from the server
   const processTransaction = async () => {
     setLoading(true);
-    const txResponse = await fetch(
-      `/${NODE_ENV === "production" ? "api" : "dev"}/create-transaction`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(order),
-      }
-    );
+    const txResponse = await fetch(`${API_LOCATION}/create-transaction`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    });
     const txData = await txResponse.json();
 
     const tx = Transaction.from(Buffer.from(txData.transaction, "base64"));
@@ -51,11 +48,7 @@ export const Coffee = () => {
 
     try {
       const txHash = await sendTransaction(tx, connection);
-      info(
-        `Transaction sent: https://solscan.io/tx/${txHash}?cluster=${
-          NODE_ENV === "production" ? "mainnet" : "devnet"
-        }`
-      );
+      info(`Transaction sent: ${txHash}`);
       setStatus(STATUS.Submitted);
     } catch (error) {
       error(error);
