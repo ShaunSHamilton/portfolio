@@ -10,7 +10,7 @@
     "build:client": "npm run -w=client build",
     "build:server": "npm run -w=server build",
     "predeploy": "npm run build:client",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d client/dist"
   },
   "browserslist": {
     "production": [
