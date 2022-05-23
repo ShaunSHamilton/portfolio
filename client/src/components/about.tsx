@@ -22,12 +22,16 @@
 // import { faTypescript } from "../faTypescript";
 // import { Canvas } from "./canvas";
 
+import { Web3 } from "./web3";
+
 export const About = () => {
   return (
     <div id="about">
       <header className="about-header">
         {/* <Canvas colours={props.colours} /> */}
         <h2 className="name">Shaun Hamilton</h2>
+
+        <Web3 />
 
         <p className="para">
           <b>Software Developer</b> at <em>freeCodeCamp</em>,{" "}

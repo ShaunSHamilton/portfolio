@@ -117,8 +117,68 @@ nav {
   margin-top: 60px;
 }
 
+.about-header {
+  display: flex;
+  flex-direction: column;
+}
+
 .name {
   text-align: center;
+}
+
+/* SOLANA WALLET ADAPTER SPECIFIC */
+
+button.wallet-adapter-button {
+  background-color: #5faefe;
+  border: 1px solid #124c86;
+  border-radius: 4px;
+  color: #111;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+  width: 80%;
+}
+
+#support-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* #support-form > label {
+} */
+
+#support-amount {
+  width: 50px;
+  background-color: #2e1616;
+  color: rgb(38, 255, 19);
+  font-size: 1.1rem;
+}
+
+#support-button {
+  margin-top: 10px;
+  background-color: #84ceff;
+  border-radius: 3px;
+  font-size: 1.2rem;
+}
+
+#support-form > p {
+  margin-top: 10px;
+  font-size: 0.7rem;
+}
+
+.tx-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .para {

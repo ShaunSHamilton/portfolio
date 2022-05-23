@@ -1,0 +1,14 @@
+{
+  "/api": {
+    "target": "https://web3-handle.herokuapp.com/",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/dev": {
+    "target": "http://localhost:3000/",
+    "pathRewrite": {
+      "^/dev": ""
+    }
+  }
+}
