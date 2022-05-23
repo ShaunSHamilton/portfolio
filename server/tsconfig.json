@@ -16,6 +16,7 @@
       // but *only* in ts-node.  Useful if you want ts-node and tsc to use
       // different options with a single tsconfig.json.
       // "esm": true
+      "allowSyntheticDefaultImports": true
     }
   },
   "compilerOptions": {
@@ -24,5 +25,5 @@
     "moduleResolution": "node"
     // "esModuleInterop": true
   },
-  "include": ["server/**/*.ts"]
+  "include": ["**/*.ts"]
 }

@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config({ path: "../.env" });
+import "dotenv/config";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   clusterApiUrl,

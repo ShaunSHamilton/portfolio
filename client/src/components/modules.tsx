@@ -12,7 +12,7 @@ export const Modules = () => {
     async function asyncFetchAndSort(sortFunc) {
       try {
         const data = await fetch(
-          "https://raw.githubusercontent.com/ShaunSHamilton/portfolio/main/public/modules.json"
+          "https://raw.githubusercontent.com/ShaunSHamilton/portfolio/main/client/public/modules.json"
         );
         const moduleJson = await data.json();
         const sortedData = moduleJson.sort(sortFunc);
