@@ -1,27 +1,24 @@
 import { useState } from "react";
+import { ModuleType } from "../types";
 
-export const Module = (props) => {
+export const Module = ({ link, name, description, year }: ModuleType) => {
   const [isShowDesc, setIsShowDesc] = useState(false);
   return (
     <div className="card">
       <div className="card-body">
         <h4 className="card-title">
-          {props.module.link ? (
-            <a
-              href={props.module.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {props.module.name}
+          {link ? (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              {name}
             </a>
           ) : (
-            props.module.name
+            name
           )}
         </h4>
         <p className={"mod-description" + (isShowDesc ? " show" : " hide")}>
-          {props.module.description}
+          {description}
         </p>
-        {props.module.description && (
+        {description && (
           <button
             onClick={() => setIsShowDesc(!isShowDesc)}
             className="card-btn"
@@ -30,7 +27,7 @@ export const Module = (props) => {
           </button>
         )}
       </div>
-      <div className="card-footer">Year {props.module.year}</div>
+      <div className="card-footer">Year {year}</div>
     </div>
   );
 };

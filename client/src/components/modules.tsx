@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import { ModuleType } from "../types";
 import { Module } from "./module";
 
 export const Modules = () => {
-  const [modules, setModules] = useState([]);
+  const [modules, setModules] = useState<ModuleType[]>([]);
   const [isAscending, setIsAscending] = useState(false);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [allModuleData, setAllModuleData] = useState([]);
+  const [error, setError] = useState<string | null>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
@@ -20,8 +22,7 @@ export const Modules = () => {
         setModules(sortedData);
       } catch (err) {
         console.log(err);
-        setAllModuleData([{ name: "Error", description: err }]);
-        setModules([{ name: "Error", description: err }]);
+        setError(error);
       }
     }
     asyncFetchAndSort((a, b) => b.year - a.year);
@@ -111,8 +112,8 @@ export const Modules = () => {
         </fieldset>
       </fieldset>
       <div className="card-deck">
-        {modules.map((module, i) => (
-          <Module module={module} key={i} />
+        {modules.map(({ link, name, description, year }, i) => (
+          <Module {...{ link, name, description, year }} key={i} />
         ))}
       </div>
     </div>

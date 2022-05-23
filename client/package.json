@@ -5,8 +5,8 @@
   "private": true,
   "homepage": "http://shaunshamilton.github.io/portfolio/",
   "scripts": {
-    "start": "NET=devnet parcel public/index.html",
-    "build": "NET=mainnet parcel build public/index.html --public-url /portfolio",
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html --public-url /portfolio",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

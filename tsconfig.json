@@ -16,14 +16,17 @@
       // but *only* in ts-node.  Useful if you want ts-node and tsc to use
       // different options with a single tsconfig.json.
       // "esm": true
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      "outDir": "./server/build",
+      "generateDeclarationFiles": false
     }
   },
   "compilerOptions": {
     // typescript options here
     "module": "ESNext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "outDir": "./server/build"
     // "esModuleInterop": true
   },
-  "include": ["**/*.ts"]
+  "include": ["server/**/*.ts"]
 }

@@ -6,12 +6,11 @@
   "homepage": "http://shaunshamilton.github.io/portfolio/",
   "scripts": {
     "start:client": "npm run -w=client start",
+    "dev:server": "npm run -w=server dev",
     "start:server": "npm run -w=server start",
     "build:client": "npm run -w=client build",
     "build:server": "npm run -w=server build",
-    "predeploy": "npm run build:client",
-    "deploy": "gh-pages -d client/dist",
-    "start": "npm run start:server"
+    "deploy": "npm run -w=client deploy"
   },
   "browserslist": {
     "production": [
@@ -29,9 +28,8 @@
     "node": "16.x",
     "npm": "8.x"
   },
-  "dependencies": {
-    "@solana/web3.js": "^1.43.1",
-    "@solana/wallet-adapter-base": "^0.9.5",
-    "logover": "^1.3.1"
-  }
+  "workspaces": [
+    "client",
+    "server"
+  ]
 }

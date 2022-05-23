@@ -1,4 +1,4 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   clusterApiUrl,
@@ -15,6 +15,7 @@ import {
 import BigNumber from "bignumber.js";
 import { Request, Response } from "express";
 import { debug, error } from "logover";
+config({ path: "../.env" });
 
 const usdcAddress = new PublicKey(
   "Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr"
