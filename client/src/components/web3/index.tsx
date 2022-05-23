@@ -16,8 +16,6 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 import { Solana } from "./solana";
 
-import "@solana/wallet-adapter-react-ui/styles.css";
-
 const { NET } = process.env;
 export const Web3 = () => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
