@@ -14,7 +14,10 @@ import {
 } from "@solana/spl-token";
 import BigNumber from "bignumber.js";
 import { Request, Response } from "express";
-import { debug, error } from "logover";
+import { Logger } from "logover";
+const logover = new Logger({
+  level: "info",
+});
 config({ path: "../.env" });
 
 const usdcAddress = new PublicKey(
@@ -35,7 +38,7 @@ const { NET } = process.env;
 export const createTransaction = async (req: Request, res: Response) => {
   try {
     // Extract the transaction data from the request body
-    debug(req.body);
+    logover.debug(req.body);
     const { buyer, orderID, amount } = req.body;
 
     // If we don't have something we need, stop!
@@ -107,7 +110,10 @@ export const createTransaction = async (req: Request, res: Response) => {
       bigAmount.toNumber() * 10 ** usdcMint.decimals,
       usdcMint.decimals // The token could have any number of decimals
     );
-    debug(bigAmount.toNumber(), bigAmount.toNumber() ** usdcMint.decimals);
+    logover.debug(
+      bigAmount.toNumber(),
+      bigAmount.toNumber() ** usdcMint.decimals
+    );
 
     // The rest remains the same :)
     transferInstruction.keys.push({
@@ -128,7 +134,7 @@ export const createTransaction = async (req: Request, res: Response) => {
       transaction: base64,
     });
   } catch (err) {
-    error(err);
+    logover.error(err);
     res.status(500).json({ error: "error creating transaction" });
     return;
   }

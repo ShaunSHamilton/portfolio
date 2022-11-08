@@ -1,3 +1,4 @@
+import React from "react";
 import { ProjectCard } from "./project-card";
 
 export const ProjectDeck = () => {

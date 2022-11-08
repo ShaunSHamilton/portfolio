@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Particle from "./particle";
 
 export const Canvas = (props) => {
   const [colours, setColours] = useState([]);
   function loaded() {
     let canvas = document.getElementById("canvas") as HTMLCanvasElement,
-      ctx = canvas.getContext("2d"),
+      ctx = canvas.getContext("2d")!,
       width = (canvas.width = window.innerWidth),
       height = (canvas.height = window.innerHeight),
-      particles = [],
+      particles: Particle[] = [],
       particleNum = 30;
     window.onresize = () => {
       width = canvas.width = window.innerWidth;

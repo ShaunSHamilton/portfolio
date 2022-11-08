@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { ModuleType } from "../types";
 import { Module } from "./module";
@@ -6,7 +7,7 @@ export const Modules = () => {
   const [modules, setModules] = useState<ModuleType[]>([]);
   const [isAscending, setIsAscending] = useState(false);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
-  const [allModuleData, setAllModuleData] = useState([]);
+  const [allModuleData, setAllModuleData] = useState<ModuleType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
 
@@ -78,7 +79,7 @@ export const Modules = () => {
             aria-expanded={isFilterExpanded}
             onClick={() => {
               setIsFilterExpanded(!isFilterExpanded);
-              const sel = selectRef.current;
+              const sel = selectRef.current!;
               sel.size = 5;
             }}
           >

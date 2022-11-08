@@ -1,9 +1,11 @@
 export default class Vector2D {
-  constructor(x, y) {
+  x: number;
+  y: number;
+  constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
-  set(x, y) {
+  set(x: number, y: number) {
     this.x = x;
     this.y = y;
     return this;
@@ -11,17 +13,17 @@ export default class Vector2D {
   clone() {
     return new Vector2D(this.x, this.y);
   }
-  add(v) {
+  add(v: Vector2D) {
     this.x += v.x;
     this.y += v.y;
     return this;
   }
-  sub(v) {
+  sub(v: Vector2D) {
     this.x -= v.x;
     this.y -= v.y;
     return this;
   }
-  mult(v) {
+  mult(v: Vector2D) {
     this.x *= v.x;
     this.y *= v.y;
     return this;
@@ -29,7 +31,7 @@ export default class Vector2D {
   magnitude() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   }
-  setFromScalarAngle(scalar, angle) {
+  setFromScalarAngle(scalar: number, angle: number) {
     this.x = Math.cos(angle) * scalar;
     this.y = Math.sin(angle) * scalar;
   }

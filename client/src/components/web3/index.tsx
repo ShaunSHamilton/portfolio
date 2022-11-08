@@ -15,6 +15,7 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 import { Solana } from "./solana";
+import React from "react";
 
 const { NET } = process.env;
 export const Web3 = () => {

@@ -2,7 +2,11 @@ import { useState, useMemo, useEffect } from "react";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { Keypair, Transaction } from "@solana/web3.js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { error, info } from "logover";
+import { Logger } from "logover";
+import React from "react";
+const logover = new Logger({
+  level: "info",
+});
 
 const STATUS = {
   Initial: "Initial",
@@ -24,7 +28,7 @@ export const Coffee = () => {
   // useMemo is a React hook that only computes the value if the dependencies change
   const order = useMemo(
     () => ({
-      buyer: publicKey.toString(),
+      buyer: publicKey!.toString(),
       orderID: orderID.toString(),
       amount: supportAmount,
     }),
@@ -44,11 +48,11 @@ export const Coffee = () => {
     const txData = await txResponse.json();
 
     const tx = Transaction.from(Buffer.from(txData.transaction, "base64"));
-    info("Tx data is", tx);
+    logover.info("Tx data is", tx);
 
     try {
       const txHash = await sendTransaction(tx, connection);
-      info(`Transaction sent: ${txHash}`);
+      logover.info(`Transaction sent: ${txHash}`);
       setStatus(STATUS.Submitted);
     } catch (error) {
       error(error);
@@ -64,7 +68,7 @@ export const Coffee = () => {
       const interval = setInterval(async () => {
         try {
           const result = await findReference(connection, orderID);
-          info("Finding tx reference", result);
+          logover.info("Finding tx reference", result);
           if (!result.err) {
             clearInterval(interval);
             setStatus(STATUS.Paid);
@@ -75,7 +79,7 @@ export const Coffee = () => {
           if (e instanceof FindReferenceError) {
             return null;
           }
-          error("Unknown error", e);
+          logover.error("Unknown error", e);
         } finally {
           setLoading(false);
         }

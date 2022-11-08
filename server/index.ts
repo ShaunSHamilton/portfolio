@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import logover, { info } from "logover";
+import { Logger } from "logover";
 import { createTransaction } from "./create-transaction.js";
 
-logover({
+const logover = new Logger({
   level: "debug",
   timestamp: "[dd/MM/YYYY hh:mm:ss]",
 });
@@ -37,5 +37,5 @@ app.use((_req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  info(`Server listening on port ${PORT}`);
+  logover.info(`Server listening on port ${PORT}`);
 });
