@@ -1,35 +1,33 @@
 {
   "name": "portfolio",
-  "author": "Shaun Hamilton",
-  "version": "1.0.0",
   "private": true,
-  "homepage": "http://shaunshamilton.github.io/portfolio/",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev:client": "API_LOCATION=http://localhost:3000 npm run -w=client start",
-    "dev:server": "npm run -w=server dev",
-    "start:server": "npm run -w=server start",
-    "build:client": "npm run -w=client build",
-    "build:server": "npm run -w=server build",
-    "deploy": "npm run -w=client deploy"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@fontsource/roboto": "^5.2.6",
+    "@mui/material": "^7.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
-  "engines": {
-    "node": "18.x",
-    "npm": "8.x"
-  },
-  "workspaces": [
-    "client",
-    "server"
-  ]
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.4"
+  }
 }
